@@ -1,6 +1,6 @@
 <html>
-  <head>
-    <script type="text/javascript">
+<head>
+  <script type="text/javascript">
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
       var CLIENT_ID = '1010036669880-b47odlcdjj5124d5cbtvoo6mktu0u207.apps.googleusercontent.com';
@@ -10,13 +10,13 @@
       /**
        * Check if current user has authorized this application.
        */
-      function checkAuth() {
+       function checkAuth() {
         gapi.auth.authorize(
-          {
-            'client_id': CLIENT_ID,
-            'scope': SCOPES.join(' '),
-            'immediate': true
-          }, handleAuthResult);
+        {
+          'client_id': CLIENT_ID,
+          'scope': SCOPES.join(' '),
+          'immediate': true
+        }, handleAuthResult);
       }
 
       /**
@@ -24,7 +24,7 @@
        *
        * @param {Object} authResult Authorization result.
        */
-      function handleAuthResult(authResult) {
+       function handleAuthResult(authResult) {
         var authorizeDiv = document.getElementById('authorize-div');
         if (authResult && !authResult.error) {
           // Hide auth UI, then load client library.
@@ -42,7 +42,7 @@
        *
        * @param {Event} event Button click event.
        */
-      function handleAuthClick(event) {
+       function handleAuthClick(event) {
         gapi.auth.authorize(
           {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
           handleAuthResult);
@@ -53,7 +53,7 @@
        * Load Google Calendar client library. List upcoming events
        * once client library is loaded.
        */
-      function loadCalendarApi() {
+       function loadCalendarApi() {
         gapi.client.load('calendar', 'v3', listUpcomingEvents);
       }
 
@@ -62,13 +62,14 @@
        * the authorized user's calendar. If no events are found an
        * appropriate message is printed.
        */
-      function listUpcomingEvents() {
+       function listUpcomingEvents() {
+        //Gets events from google calendar
         var request = gapi.client.calendar.events.list({
           'calendarId': 'primary',
           'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
-          'maxResults': 10,
+          'maxResults': 3,
           'orderBy': 'startTime'
         });
 
@@ -83,7 +84,13 @@
               if (!when) {
                 when = event.start.date;
               }
-              appendPre(event.summary + ' (' + when + ')')
+              if(event.summary === "Read"){alert("test");
+              appendPre("Read" /*+ ' (' + when + ')'*/)
+            }
+            
+              // appendPre(event.summary /*+ ' (' + when + ')'*/)
+              //if event is not airsoft
+              
             }
           } else {
             appendPre('No upcoming events found.');
@@ -98,7 +105,7 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(message) {
+       function appendPre(message) {
         var pre = document.getElementById('output');
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
@@ -118,4 +125,4 @@
     </div>
     <pre id="output"></pre>
   </body>
-</html>
+  </html>

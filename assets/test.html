@@ -1,6 +1,7 @@
 <html>
 <head>
 
+  <!-- CALENDAR API -->
   <script type="text/javascript">
 
       // Your Client ID can be retrieved from your project in the Google
@@ -86,6 +87,7 @@
 
           
           if (events.length > 0) {
+
             console.log("I AM INVINCIBLE");
 
             // IF WEEKDAY
@@ -98,9 +100,16 @@
                   when = event.start.date;
                 }
 
+                // CHECK BLUE DAY
                 if(event.summary === "BLUE DAY"){
                   writeDay("Blue");
                   alert("Blue Day");
+                }
+
+                // CHECK GOLD DAY
+                else if(event.summary === "GOLD DAY"){
+                  writeDay("Gold");
+                  alert("Gold Day");
                 }
 
               // writeDay(event.summary /*+ ' (' + when + ')'*/)
@@ -112,12 +121,12 @@
           if(checkWeekend === 0 || checkWeekend === 6){
             console.log("Everybody is working for the weekend");
             writeDay("Its the Weekend");
-            alert("weekend");
+            // alert("weekend");
           }
 
-        }else {
-          writeDay('No upcoming events found.');
         }
+        // IF NO EVENTS
+        else {writeDay("sorry couldn't catch event from calendar");}
 
       });
       }
@@ -129,10 +138,10 @@
        * @param {string} message Text to be placed in pre element.
        */
        function writeDay(message) {
-        /* ORIGINAL
-        var pre = document.getElementById('output');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
+        /* ORIGINAL CODE
+        * var pre = document.getElementById('output');
+        * var textContent = document.createTextNode(message + '\n');
+        * pre.appendChild(textContent);
         */
 
         // JQUERY

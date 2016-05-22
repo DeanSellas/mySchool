@@ -1,6 +1,8 @@
 <html>
 <head>
+
   <script type="text/javascript">
+
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
       var CLIENT_ID = '1010036669880-b47odlcdjj5124d5cbtvoo6mktu0u207.apps.googleusercontent.com';
@@ -9,9 +11,8 @@
 
       var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.google.com';
 
-      //TEST CODE FOR DATE
-      var d = new Date();
-      var n = d.getDay();
+      // TEST CODE FOR DATE
+      var checkWeekend = (new Date()).getDay();
 
       /**
        * Check if current user has authorized this application.
@@ -81,12 +82,14 @@
 
         request.execute(function(resp) {
           var events = resp.items;
-          appendPre('Upcoming events:');
+          writeDay('Upcoming events:');
 
           
           if (events.length > 0) {
             console.log("I AM INVINCIBLE");
-            if(n !== 0 && n !== 6){
+
+            // IF WEEKDAY
+            if(checkWeekend !== 0 && checkWeekend !== 6){
 
               for (i = 0; i < events.length; i++) {
                 var event = events[i];
@@ -96,22 +99,24 @@
                 }
 
                 if(event.summary === "BLUE DAY"){
+                  writeDay("Blue");
                   alert("Blue Day");
-                  appendPre("Blue");
                 }
 
-              //appendPre(event.summary /*+ ' (' + when + ')'*/)
+              // writeDay(event.summary /*+ ' (' + when + ')'*/)
               
             }
           }
 
-          if(n === 0 || n === 6){
+          // IF WEEKEND
+          if(checkWeekend === 0 || checkWeekend === 6){
+            console.log("Everybody is working for the weekend");
+            writeDay("Its the Weekend");
             alert("weekend");
-            appendPre("Everybody is working for the weekend");
           }
 
         }else {
-          appendPre('No upcoming events found.');
+          writeDay('No upcoming events found.');
         }
 
       });
@@ -123,15 +128,21 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
-       function appendPre(message) {
+       function writeDay(message) {
+        /* ORIGINAL
         var pre = document.getElementById('output');
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
+        */
+
+        // JQUERY
+        $('#output').append(message +"\n");
       }
 
     </script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body>
     <div id="authorize-div" style="display: none">

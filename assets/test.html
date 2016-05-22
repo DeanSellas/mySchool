@@ -7,6 +7,12 @@
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
+      var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.google.com';
+
+      //TEST CODE FOR DATE
+      var d = new Date();
+      var n = d.getDay();
+
       /**
        * Check if current user has authorized this application.
        */
@@ -65,7 +71,7 @@
        function listUpcomingEvents() {
         //Gets events from google calendar
         var request = gapi.client.calendar.events.list({
-          'calendarId': 'primary',
+          'calendarId': calendar,
           'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
@@ -77,26 +83,38 @@
           var events = resp.items;
           appendPre('Upcoming events:');
 
+          
           if (events.length > 0) {
-            for (i = 0; i < events.length; i++) {
-              var event = events[i];
-              var when = event.start.dateTime;
-              if (!when) {
-                when = event.start.date;
-              }
-              if(event.summary === "Read"){alert("test");
-              appendPre("Read" /*+ ' (' + when + ')'*/)
-            }
-            
-              // appendPre(event.summary /*+ ' (' + when + ')'*/)
-              //if event is not airsoft
+            console.log("I AM INVINCIBLE");
+            if(n !== 0 && n !== 6){
+
+              for (i = 0; i < events.length; i++) {
+                var event = events[i];
+                var when = event.start.dateTime;
+                if (!when) {
+                  when = event.start.date;
+                }
+
+                if(event.summary === "BLUE DAY"){
+                  alert("Blue Day");
+                  appendPre("Blue");
+                }
+
+              //appendPre(event.summary /*+ ' (' + when + ')'*/)
               
             }
-          } else {
-            appendPre('No upcoming events found.');
           }
 
-        });
+          if(n === 0 || n === 6){
+            alert("weekend");
+            appendPre("Everybody is working for the weekend");
+          }
+
+        }else {
+          appendPre('No upcoming events found.');
+        }
+
+      });
       }
 
       /**

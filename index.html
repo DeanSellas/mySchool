@@ -34,16 +34,19 @@
     <h1>mySchool</h1>
     <p>Today is a <span id="output"></span> Day</p>
 
+
+    <!-- AUTHORIZE CODE FOR GOOGLE API (NEEDED) -->
+    <div id="authorize-div" style="display: none">
+    <p class="login">Please Log into your school account</p>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button class="btn btn-default" id="authorize-button" onclick="handleAuthClick(event)">
+        Log In
+      </button>
+    </div>
+
   </div>
   
-  <!-- AUTHORIZE CODE FOR GOOGLE API (NEEDED) -->
-  <div id="authorize-div" style="display: none">
-    <span>Authorize access to Google Calendar API</span>
-    <!--Button for the user to click to initiate auth sequence -->
-    <button id="authorize-button" onclick="handleAuthClick(event)">
-        Authorize
-      </button>
-  </div>
+  
 
 </body>
 

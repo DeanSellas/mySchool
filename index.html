@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -18,17 +19,32 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="assets/javascript/app.js"></script>
   <script src="assets/javascript/browser.js"></script>
+  
+  <!-- API -->
+  <script src="assets/javascript/api.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+  </script>
 
 </head>
+
 <body>
 
   <div class="container center">
 
-    <h1>Blue or Gold Day</h1>
-    <p>Today is a <span id="day"></span> Day</p>
-    <p>NOT FUNTIONING YET STILL WORKING ON CALENDAR API</p>
-    
+    <h1>mySchool</h1>
+    <p>Today is a <span id="output"></span> Day</p>
+
+  </div>
+  
+  <!-- AUTHORIZE CODE FOR GOOGLE API (NEEDED) -->
+  <div id="authorize-div" style="display: none">
+    <span>Authorize access to Google Calendar API</span>
+    <!--Button for the user to click to initiate auth sequence -->
+    <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
   </div>
 
 </body>
+
 </html>

@@ -10,6 +10,7 @@
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
+      // CALENDAR ID
       var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.google.com';
 
       // TEST CODE FOR DATE
@@ -88,8 +89,6 @@
           
           if (events.length > 0) {
 
-            console.log("I AM INVINCIBLE");
-
             // IF WEEKDAY
             if(checkWeekend !== 0 && checkWeekend !== 6){
 
@@ -103,12 +102,14 @@
                 // CHECK BLUE DAY
                 if(event.summary === "BLUE DAY"){
                   writeDay("Blue");
+                  console.log("Blue Moon");
                   alert("Blue Day");
                 }
 
                 // CHECK GOLD DAY
                 else if(event.summary === "GOLD DAY"){
                   writeDay("Gold");
+                  console.log("King Midas");
                   alert("Gold Day");
                 }
 
@@ -125,8 +126,9 @@
           }
 
         }
+
         // IF NO EVENTS
-        else {writeDay("sorry couldn't catch event from calendar");}
+        else {writeDay("Sorry couldn't catch event from calendar");}
 
       });
       }

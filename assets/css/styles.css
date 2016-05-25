@@ -1,8 +1,12 @@
+.hide{display:none;}
 div{
     text-align: center;
     background-color: #ccc;
 }
 .blueDay{
   background-color: navy;
+}
+.goldDay{
+  background-color: yellow;
 }
 .login{display: inline-block;}

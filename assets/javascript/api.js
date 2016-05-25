@@ -1,3 +1,7 @@
+/* API JAVASCRIPT 
+-------------------------------------------------------
+*/
+
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
 var CLIENT_ID = '1010036669880-b47odlcdjj5124d5cbtvoo6mktu0u207.apps.googleusercontent.com';
@@ -99,15 +103,16 @@ function listUpcomingEvents() {
           if (event.summary === "BLUE DAY") {
             writeDay("Blue");
             console.log("Blue Moon");
+            // alert("Blue Day");
             $('body').addClass("blueDay");
-            $('#output').addClass("day")
           }
 
           // CHECK GOLD DAY
           else if (event.summary === "GOLD DAY") {
             writeDay("Gold");
             console.log("King Midas");
-            alert("Gold Day");
+            // alert("Gold Day");
+            $('body').addClass("goldDay");
           }
 
           // writeDay(event.summary /*+ ' (' + when + ')'*/)
@@ -139,12 +144,23 @@ function listUpcomingEvents() {
  * @param {string} message Text to be placed in pre element.
  */
 function writeDay(message) {
-  /* ORIGINAL CODE
-   * var pre = document.getElementById('output');
-   * var textContent = document.createTextNode(message + '\n');
-   * pre.appendChild(textContent);
-   */
-
   // JQUERY
   $('#output').text(message);
 }
+
+
+
+/* NON API JAVASCRIPT 
+-------------------------------------------------------
+*/
+
+// GETS MONTH AND DAY
+var month = (new Date()).getMonth() + 1;
+var day = (new Date()).getDate();
+
+function setDay() {
+  // SETS DATE
+  $('#date').text(month + '/' + day);
+}
+
+window.onload = setDay;

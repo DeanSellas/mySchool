@@ -1,53 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- mySchool APP
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+-->
+
 <head>
 
+  <!-- SETUP -->
+  <title>mySchool</title>
   <meta charset="UTF-8">
+  <meta name="author" content="Dean Sellas">
+  <meta name="description" content="mySchool App">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- FOR APP -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+  <!-- FAVICON -->
   <link rel="apple-touch-icon" href="favicon.ico">
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <title>mySchool</title>
 
+  <!-- JAVASCRIPT -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="assets/javascript/app.js"></script>
   <script src="assets/javascript/browser.js"></script>
-  
+  <script src="assets/javascript/app.js"></script>
   <!-- API -->
   <script src="assets/javascript/api.js"></script>
   <script src="https://apis.google.com/js/client.js?onload=checkAuth">
   </script>
 
+  <!-- FONTS -->
+  <link href='https://fonts.googleapis.com/css?family=Kadwa' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 </head>
 
-<body>
+<body onresize="resize()">
 
-  <div class="container center">
 
-    <h1>mySchool</h1>
-    <div id="app">
+  <div id="wrapper" class="">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">mySchool</a>
+        </li>
+        <li>
+          <a href="#">Homework</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Support</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+      <i id="navBtn" class="fa fa-2x" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div class="container center app">
+    <div class="title">
+      <h1>mySchool</h1>
+
+    </div>
+    <div class="hide" id="app">
+
       <p>Today is a <span id="output"></span> Day</p>
       <span id="date"></span>
+
     </div>
 
     <!-- AUTHORIZE CODE FOR GOOGLE API (NEEDED) -->
-    <div id="authorize-div" style="display: none">
+    <div id="authorizeDiv" class="hide">
       <p class="login">Please Log into your school account</p>
-      <!--Button for the user to click to initiate auth sequence -->
-      <button class="btn btn-default" id="authorize-button" onclick="handleAuthClick(event)">
-        Log In
-      </button>
+      <!-- Button for the user to click to initiate auth sequence -->
+      <button class="btn btn-default" id="authorize-button" onclick="handleAuthClick(event)">Log In</button>
     </div>
 
   </div>
-  
+
+
+  <footer class="footer">
+    <div class="container">
+      <p>Created by <a href="http://thespacecoder.com/">Dean Sellas</a></p>
+    </div>
+  </footer>
+
+  <script>
+
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+
+      if($('#navBtn').hasClass("fa-bars") === true){
+        console.log("bars");
+        $('#navBtn').addClass("fa-times");
+        $('#navBtn').removeClass("fa-bars");
+      }
+      else if($('#navBtn').hasClass("fa-times") === true){
+        console.log("times");
+        $('#navBtn').addClass("fa-bars");
+        $('#navBtn').removeClass("fa-times");
+      }
+    });
+
+    window.onload(resize());
+
+  </script>
 
 
 </body>

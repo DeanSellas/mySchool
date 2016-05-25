@@ -4,14 +4,17 @@
 
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
-var CLIENT_ID = '1010036669880-b47odlcdjj5124d5cbtvoo6mktu0u207.apps.googleusercontent.com';
 
-var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+// API KEY
+var CLIENT_ID = '903500945114-chpbcc2dkele8lnrffk7ko0jtchkhd07.apps.googleusercontent.com';
+
+// SETS PERMISSIONS
+var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
 // CALENDAR ID
 var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.google.com';
 
-// TEST CODE FOR DATE
+// GET DAY OF WEEK
 var checkWeekend = (new Date()).getDay();
 
 /**
@@ -32,17 +35,17 @@ function checkAuth() {
  */
 function handleAuthResult(authResult) {
   var authorizeDiv = document.getElementById('authorize-div');
-  var app = document.getElementById('app');
   if (authResult && !authResult.error) {
     loadCalendarApi();
     // Hide auth UI, then load client library.
-    authorizeDiv.style.display = 'none';
-    app.style.display = 'inline-block';
+    $('#authorizeDiv').addClass('hide');
+    // SHOW APP
+    $('#app').removeClass("hide");
     
   } else {
     // Show auth UI, allowing the user to initiate authorization by
     // clicking authorize button.
-    authorizeDiv.style.display = 'inline';
+    $('#authorizeDiv').removeClass('hide');
   }
 }
 
@@ -147,7 +150,7 @@ function listUpcomingEvents() {
  * @param {string} message Text to be placed in pre element.
  */
 function writeDay(message) {
-  // JQUERY
+  // DISPLAYS MESSAGE
   $('#output').text(message);
 }
 
@@ -157,13 +160,3 @@ function writeDay(message) {
 -------------------------------------------------------
 */
 
-// GETS MONTH AND DAY
-var month = (new Date()).getMonth() + 1;
-var day = (new Date()).getDate();
-
-function setDay() {
-  // SETS DATE
-  $('#date').text(month + '/' + day);
-}
-
-window.onload = setDay;

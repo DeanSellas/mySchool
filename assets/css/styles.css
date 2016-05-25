@@ -3,6 +3,9 @@ div{
     text-align: center;
     background-color: #ccc;
 }
+span{
+  display: block;
+}
 .blueDay{
   background-color: navy;
 }
@@ -10,3 +13,6 @@ div{
   background-color: yellow;
 }
 .login{display: inline-block;}
+#app{
+  display: none;
+}

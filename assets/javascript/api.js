@@ -35,13 +35,14 @@ function checkAuth() {
  */
 function handleAuthResult(authResult) {
   var authorizeDiv = document.getElementById('authorize-div');
+
   if (authResult && !authResult.error) {
     loadCalendarApi();
     // Hide auth UI, then load client library.
     $('#authorizeDiv').addClass('hide');
     // SHOW APP
     $('#app').removeClass("hide");
-    
+
   } else {
     // Show auth UI, allowing the user to initiate authorization by
     // clicking authorize button.
@@ -91,7 +92,6 @@ function listUpcomingEvents() {
   request.execute(function(resp) {
     var events = resp.items;
     writeDay('Upcoming events:');
-
 
     if (events.length > 0) {
 

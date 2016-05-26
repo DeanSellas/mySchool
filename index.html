@@ -109,33 +109,22 @@
   <script>
 
   // GETS NAV ICON CLICK
-    $("#menu-toggle").click(function(e) {
-
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-
-      if($('#navBtn').hasClass("fa-bars") === true){
-
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    if($('#navBtn').hasClass("fa-bars") === true){
         // console.log("bars");
         $('#navBtn').addClass("fa-times");
         $('#navBtn').removeClass("fa-bars");
-
       }
-
       else if($('#navBtn').hasClass("fa-times") === true){
-
         // console.log("times");
         $('#navBtn').addClass("fa-bars");
         $('#navBtn').removeClass("fa-times");
-
       }
     });
-
-    window.onload(resize());
-
+  
   </script>
 
-
 </body>
-
 </html>

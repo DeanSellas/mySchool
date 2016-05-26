@@ -28,7 +28,9 @@ function resize(){
 // SETS DATE
 function setDay() {
   $('#date').text(month + '/' + day);
+
 }
 
-window.onload = resize;
-window.onload = setDay;
+// LOAD FUNTIONS
+$('body').ready(resize);
+$('body').ready(setDay);

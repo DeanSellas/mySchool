@@ -16,7 +16,7 @@ span {
   background-color: navy;
 }
 .goldDay {
-  background-color: yellow;
+  background-color: #ccac00;
 }
 .login {
   display: inline-block;
@@ -27,12 +27,8 @@ footer {
   position: fixed;
   width: 100%;
   text-align:right;
+  color: #a3a3a3;
 }
-footer a{
-  color: #333;
-}
-
-
 
 #wrapper {
   padding-left: 0;

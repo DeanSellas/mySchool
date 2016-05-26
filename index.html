@@ -46,11 +46,12 @@
 <body onresize="resize()">
 
 
-  <div id="wrapper" class="">
+  <div id="wrapper">
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
+
         <li class="sidebar-brand">
           <a href="#">mySchool</a>
         </li>
@@ -66,19 +67,22 @@
         <li>
           <a href="#">Support</a>
         </li>
+
       </ul>
     </div>
-    <!-- /#sidebar-wrapper -->
+
     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
       <i id="navBtn" class="fa fa-2x" aria-hidden="true"></i>
     </a>
+
   </div>
 
   <div class="container center app">
+
     <div class="title">
       <h1>mySchool</h1>
-
     </div>
+
     <div class="hide" id="app">
 
       <p>Today is a <span id="output"></span> Day</p>
@@ -86,7 +90,7 @@
 
     </div>
 
-    <!-- AUTHORIZE CODE FOR GOOGLE API (NEEDED) -->
+    <!-- LOGIN FOR GOOGLE API (NEEDED) -->
     <div id="authorizeDiv" class="hide">
       <p class="login">Please Log into your school account</p>
       <!-- Button for the user to click to initiate auth sequence -->
@@ -104,19 +108,26 @@
 
   <script>
 
+  // GETS NAV ICON CLICK
     $("#menu-toggle").click(function(e) {
+
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
 
       if($('#navBtn').hasClass("fa-bars") === true){
-        console.log("bars");
+
+        // console.log("bars");
         $('#navBtn').addClass("fa-times");
         $('#navBtn').removeClass("fa-bars");
+
       }
+
       else if($('#navBtn').hasClass("fa-times") === true){
-        console.log("times");
+
+        // console.log("times");
         $('#navBtn').addClass("fa-bars");
         $('#navBtn').removeClass("fa-times");
+
       }
     });
 

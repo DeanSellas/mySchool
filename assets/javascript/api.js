@@ -153,10 +153,3 @@ function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
 }
-
-
-
-/* NON API JAVASCRIPT 
--------------------------------------------------------
-*/
-

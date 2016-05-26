@@ -3,21 +3,30 @@ var month = (new Date()).getMonth() + 1;
 var day = (new Date()).getDate();
 
 
-
+// CHECKS WINDOW SIZE
 function resize(){
+
+  // IF >= 768PX
   if (window.matchMedia("(min-width: 768px)").matches) {
-    console.log("768px or larger");
+
+    // console.log("768px or larger");
     $('#navBtn').addClass("fa-times");
     $('#navBtn').removeClass("fa-bars");
-  } else {
-    console.log("smaller than 768px");
+
+  } 
+
+  // IF < 768PX
+  else {
+
+    // console.log("smaller than 768px");
     $('#navBtn').addClass("fa-bars");
     $('#navBtn').removeClass("fa-times");
+
   }
 }
 
+// SETS DATE
 function setDay() {
-  // SETS DATE
   $('#date').text(month + '/' + day);
 }
 

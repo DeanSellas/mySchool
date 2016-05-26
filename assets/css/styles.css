@@ -98,6 +98,7 @@ footer {
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
+  transition: background .5s ease-in-out
 }
 
 .sidebar-nav li a:active,

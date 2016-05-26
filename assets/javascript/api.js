@@ -20,7 +20,7 @@ var checkWeekend = (new Date()).getDay();
 /**
  * Check if current user has authorized this application.
  */
-function checkAuth() {
+ function checkAuth() {
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES.join(' '),
@@ -33,7 +33,7 @@ function checkAuth() {
  *
  * @param {Object} authResult Authorization result.
  */
-function handleAuthResult(authResult) {
+ function handleAuthResult(authResult) {
   var authorizeDiv = document.getElementById('authorize-div');
 
   if (authResult && !authResult.error) {
@@ -55,13 +55,13 @@ function handleAuthResult(authResult) {
  *
  * @param {Event} event Button click event.
  */
-function handleAuthClick(event) {
+ function handleAuthClick(event) {
   gapi.auth.authorize({
-      client_id: CLIENT_ID,
-      scope: SCOPES,
-      immediate: false
-    },
-    handleAuthResult);
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    immediate: false
+  },
+  handleAuthResult);
   return false;
 }
 
@@ -69,7 +69,7 @@ function handleAuthClick(event) {
  * Load Google Calendar client library. List upcoming events
  * once client library is loaded.
  */
-function loadCalendarApi() {
+ function loadCalendarApi() {
   gapi.client.load('calendar', 'v3', listUpcomingEvents);
 }
 
@@ -78,10 +78,11 @@ function loadCalendarApi() {
  * the authorized user's calendar. If no events are found an
  * appropriate message is printed.
  */
-function listUpcomingEvents() {
+ function listUpcomingEvents() {
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
-    'calendarId': calendar,
+    // 'calendarId': calendar, SCHOOL CALENDAR NOT UPDATED BECAUSE ITS THE SUMMER
+    'calendarId': 'primary', // WORKING OFF MY CALENDAR
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
@@ -107,7 +108,8 @@ function listUpcomingEvents() {
 
           // CHECK BLUE DAY
           if (event.summary === "BLUE DAY") {
-            writeDay("Blue");
+            writeDay("Today is a Blue Day");
+            document.title ="mySchool | Blue Day"
             console.log("Blue Moon");
             // alert("Blue Day");
             $('body').addClass("blueDay");
@@ -115,7 +117,8 @@ function listUpcomingEvents() {
 
           // CHECK GOLD DAY
           else if (event.summary === "GOLD DAY") {
-            writeDay("Gold");
+            writeDay("Today is a Gold Day");
+            document.title ="mySchool | Gold Day"
             console.log("King Midas");
             // alert("Gold Day");
             $('body').addClass("goldDay");
@@ -128,8 +131,8 @@ function listUpcomingEvents() {
 
       // IF WEEKEND
       if (checkWeekend === 0 || checkWeekend === 6) {
-        console.log("Everybody is working for the weekend");
         writeDay("Its the Weekend");
+        console.log("Everybody is working for the weekend");
         // alert("weekend");
       }
 
@@ -149,7 +152,7 @@ function listUpcomingEvents() {
  *
  * @param {string} message Text to be placed in pre element.
  */
-function writeDay(message) {
+ function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
 }

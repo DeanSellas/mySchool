@@ -10,6 +10,10 @@
   background-color: #1d1f1f;
   color: white;
 }
+#sidebar-wrapper ::selection{
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
 
 body{
   font-family: 'Kadwa', serif;
@@ -39,6 +43,12 @@ body{
 li > .credit{
   bottom: 0px;
   font-size: 1rem;
+}
+.credit{
+  color: #999;
+}
+p.credit a:hover{
+  color: #fff;
 }
 
 #wrapper {

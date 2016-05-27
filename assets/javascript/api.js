@@ -17,10 +17,13 @@ var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.googl
 // GET DAY OF WEEK
 var checkWeekend = (new Date()).getDay();
 
+// QUICK HOTFIX
+var checkDay = 0;
+
 /**
  * Check if current user has authorized this application.
  */
- function checkAuth() {
+function checkAuth() {
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES.join(' '),
@@ -33,7 +36,7 @@ var checkWeekend = (new Date()).getDay();
  *
  * @param {Object} authResult Authorization result.
  */
- function handleAuthResult(authResult) {
+function handleAuthResult(authResult) {
   var authorizeDiv = document.getElementById('authorize-div');
 
   if (authResult && !authResult.error) {
@@ -55,13 +58,13 @@ var checkWeekend = (new Date()).getDay();
  *
  * @param {Event} event Button click event.
  */
- function handleAuthClick(event) {
+function handleAuthClick(event) {
   gapi.auth.authorize({
-    client_id: CLIENT_ID,
-    scope: SCOPES,
-    immediate: false
-  },
-  handleAuthResult);
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+      immediate: false
+    },
+    handleAuthResult);
   return false;
 }
 
@@ -69,7 +72,7 @@ var checkWeekend = (new Date()).getDay();
  * Load Google Calendar client library. List upcoming events
  * once client library is loaded.
  */
- function loadCalendarApi() {
+function loadCalendarApi() {
   gapi.client.load('calendar', 'v3', listUpcomingEvents);
 }
 
@@ -78,11 +81,11 @@ var checkWeekend = (new Date()).getDay();
  * the authorized user's calendar. If no events are found an
  * appropriate message is printed.
  */
- function listUpcomingEvents() {
+function listUpcomingEvents() {
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
     // 'calendarId': calendar, SCHOOL CALENDAR NOT UPDATED BECAUSE ITS THE SUMMER
-    'calendarId': 'primary', // WORKING OFF MY CALENDAR
+    'calendarId': 'dgsellas@gmail.com', // WORKING OFF MY CALENDAR
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
@@ -92,7 +95,6 @@ var checkWeekend = (new Date()).getDay();
 
   request.execute(function(resp) {
     var events = resp.items;
-    writeDay('Upcoming events:');
 
     if (events.length > 0) {
 
@@ -109,23 +111,28 @@ var checkWeekend = (new Date()).getDay();
           // CHECK BLUE DAY
           if (event.summary === "BLUE DAY") {
             writeDay("Today is a Blue Day");
-            document.title ="mySchool | Blue Day"
+            document.title = "mySchool | Blue Day"
             console.log("Blue Moon");
             // alert("Blue Day");
             $('body').addClass("blueDay");
+            checkDay = 1;
           }
 
           // CHECK GOLD DAY
           else if (event.summary === "GOLD DAY") {
             writeDay("Today is a Gold Day");
-            document.title ="mySchool | Gold Day"
+            document.title = "mySchool | Gold Day"
             console.log("King Midas");
             // alert("Gold Day");
             $('body').addClass("goldDay");
+            checkDay = 1;
           }
 
-          // writeDay(event.summary /*+ ' (' + when + ')'*/)
-
+          // IF NO EVENTS
+          else if(checkDay != 1) {
+            console.log("true")
+            writeDay("Sorry couldn't catch event from calendar");
+          }
         }
       }
 
@@ -135,13 +142,9 @@ var checkWeekend = (new Date()).getDay();
         console.log("Everybody is working for the weekend");
         // alert("weekend");
       }
-
     }
 
-    // IF NO EVENTS
-    else {
-      writeDay("Sorry couldn't catch event from calendar");
-    }
+
 
   });
 }
@@ -152,7 +155,7 @@ var checkWeekend = (new Date()).getDay();
  *
  * @param {string} message Text to be placed in pre element.
  */
- function writeDay(message) {
+function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
 }

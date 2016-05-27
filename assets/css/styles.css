@@ -40,14 +40,19 @@ body{
 .btn{
   margin: 5px 10px;
 }
-li > .credit{
-  bottom: 0px;
-  font-size: 1rem;
-}
 .credit{
-  color: #999;
+  position: absolute;
+  font-size: .75rem;
+  bottom: 0px;
+  min-width: 200px;
 }
-p.credit a:hover{
+.credit,
+.credit a,
+.credit a:focus{
+  color: #999;
+  text-decoration: none;
+}
+.credit a:hover{
   color: #fff;
 }
 
@@ -70,7 +75,7 @@ p.credit a:hover{
   width: 0;
   height: 100%;
   margin-left: -250px;
-  overflow-y: auto;
+  overflow: hidden;
   background: #000;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -146,6 +151,9 @@ p.credit a:hover{
   color: #fff;
   background: none;
   text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand a:focus{
+  text-decoration:none;
 }
 
 @media(min-width:768px) {

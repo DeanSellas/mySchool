@@ -53,26 +53,23 @@
       <ul class="sidebar-nav">
 
         <li class="sidebar-brand sidebar-nav-link">
-          <a href="#">mySchool</a>
+          <a id="navTitle" href="#">mySchool</a>
         </li>
         <li>
           <a class="sidebar-nav-link active" id="home" href="#">Home</a>
         </li>
         <li>
-          <a class="sidebar-nav-link" id="homework" href="#">Homework</a>
+          <a class="sidebar-nav-link" id="homework" href="#homework">Homework</a>
         </li>
         <li>
-          <a class="sidebar-nav-link" id="about" href="#">About</a>
+          <a class="sidebar-nav-link" id="about" href="#about">About</a>
         </li>
         <li>
-          <a class="sidebar-nav-link" id="support" href="#">Support</a>
-        </li>
-        <li>
-          <p class="credit">App Created by <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a></p>
+          <a class="sidebar-nav-link" id="support" href="#support">Support</a>
         </li>
 
       </ul>
-      
+      <p class="credit">App Created by <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a> and <a href="https://youtu.be/dQw4w9WgXcQ?t=18" target="_blank">Nicholas Horvat</a></p>
     </div>
 
     <a href="#menu-toggle" class="btn" id="menu-toggle"><i id="navBtn" class="fa fa-2x" aria-hidden="true"></i></a>
@@ -107,6 +104,7 @@
   $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
+    
     if($('#navBtn').hasClass("fa-bars") === true){
 
         // console.log("bars");

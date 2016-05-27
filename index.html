@@ -33,18 +33,18 @@
   <script src="assets/javascript/browser.js"></script>
   <script src="assets/javascript/app.js"></script>
   <!-- API -->
-  <script src="assets/javascript/api.js"></script>
+  <script src="http://thespacecoder.com/app/assets/javascript/api.js"></script>
   <script src="https://apis.google.com/js/client.js?onload=checkAuth">
   </script>
 
   <!-- FONTS -->
   <link href='https://fonts.googleapis.com/css?family=Kadwa' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+  
 </head>
 
 <body onresize="resize()">
-
 
   <div id="wrapper">
 
@@ -52,32 +52,34 @@
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
 
-        <li class="sidebar-brand">
+        <li class="sidebar-brand sidebar-nav-link">
           <a href="#">mySchool</a>
         </li>
         <li>
-          <a href="#">Home</a>
+          <a class="sidebar-nav-link active" id="home" href="#">Home</a>
         </li>
         <li>
-          <a href="#">Homework</a>
+          <a class="sidebar-nav-link" id="homework" href="#">Homework</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a class="sidebar-nav-link" id="about" href="#">About</a>
         </li>
         <li>
-          <a href="#">Support</a>
+          <a class="sidebar-nav-link" id="support" href="#">Support</a>
+        </li>
+        <li>
+          <p class="credit">App Created by <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a></p>
         </li>
 
       </ul>
+      
     </div>
 
-    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-      <i id="navBtn" class="fa fa-2x" aria-hidden="true"></i>
-    </a>
+    <a href="#menu-toggle" class="btn" id="menu-toggle"><i id="navBtn" class="fa fa-2x" aria-hidden="true"></i></a>
 
   </div>
 
-  <div class="container center app">
+  <div class="container text-center">
 
     <div class="title">
       <h1>mySchool</h1>
@@ -85,7 +87,7 @@
 
     <div class="hide" id="app">
 
-      <p>Today is a <span id="output"></span> Day</p>
+      <p id="output"></p>
       <span id="date"></span>
 
     </div>
@@ -99,13 +101,6 @@
 
   </div>
 
-
-  <footer class="footer">
-    <div class="container">
-      <p>Created by <a href="http://thespacecoder.com/">Dean Sellas</a></p>
-    </div>
-  </footer>
-
   <script>
 
   // GETS NAV ICON CLICK
@@ -113,14 +108,20 @@
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
     if($('#navBtn').hasClass("fa-bars") === true){
+
         // console.log("bars");
         $('#navBtn').addClass("fa-times");
         $('#navBtn').removeClass("fa-bars");
+        //setTimeout(function() {$('.credit').removeClass('hide');}, 400);
+        
       }
       else if($('#navBtn').hasClass("fa-times") === true){
+
         // console.log("times");
         $('#navBtn').addClass("fa-bars");
         $('#navBtn').removeClass("fa-times");
+        //$('.credit').addClass("hide");
+
       }
     });
   

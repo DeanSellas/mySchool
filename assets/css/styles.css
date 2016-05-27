@@ -1,16 +1,28 @@
+::selection{
+  background-color: white;
+  color: black;
+}
+.goldDay ::selection{
+  background-color: #1d1f1f;
+  color: white;
+}
+.blueDay ::selection{
+  background-color: #1d1f1f;
+  color: white;
+}
+
 body{
   font-family: 'Kadwa', serif;
   background-color: #1d1f1f;
+  color: white;
 }
 .hide {
   display: none;
 }
-.app {
-  text-align: center;
-  color: white;
-}
-span {
-  display: inline-block;
+.title h1{
+  margin-bottom: 35px;
+  font-size: 3.5em;
+  font-family: 'Pacifico', cursive;
 }
 .blueDay {
   background-color: navy;
@@ -21,13 +33,12 @@ span {
 .login {
   display: inline-block;
 }
-footer {
+.btn{
+  margin: 5px 10px;
+}
+li > .credit{
   bottom: 0px;
-  left: 0px;
-  position: fixed;
-  width: 100%;
-  text-align:right;
-  color: #a3a3a3;
+  font-size: 1rem;
 }
 
 #wrapper {
@@ -88,28 +99,33 @@ footer {
   line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li a.sidebar-nav-link {
   display: block;
   text-decoration: none;
   color: #999999;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li a.sidebar-nav-link:hover {
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
-  transition: background .5s ease-in-out
+}
+.sidebar-nav li a.sidebar-nav-link.active{
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
+.sidebar-nav li a.sidebar-nav-link:active,
+.sidebar-nav li a.sidebar-nav-link:focus {
   text-decoration: none;
 }
 
 .sidebar-nav > .sidebar-brand {
   height: 65px;
-  font-size: 18px;
+  font-size: 1.5em;
   line-height: 60px;
+  font-family: 'Pacifico', cursive;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -119,6 +135,7 @@ footer {
 .sidebar-nav > .sidebar-brand a:hover {
   color: #fff;
   background: none;
+  text-decoration: none;
 }
 
 @media(min-width:768px) {

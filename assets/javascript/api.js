@@ -7,7 +7,6 @@
 
 // API KEY
 var CLIENT_ID = '903500945114-chpbcc2dkele8lnrffk7ko0jtchkhd07.apps.googleusercontent.com';
-var CLIENT_SECRET ='v0326UZAdMymKaMhSjzod4SO';
 
 // SETS PERMISSIONS
 var SCOPES = ["https://www.googleapis.com/auth/calendar"];
@@ -59,7 +58,6 @@ var checkWeekend = (new Date()).getDay();
  function handleAuthClick(event) {
   gapi.auth.authorize({
     client_id: CLIENT_ID,
-    client_secret: CLIENT_SECRET,
     scope: SCOPES,
     immediate: false
   },

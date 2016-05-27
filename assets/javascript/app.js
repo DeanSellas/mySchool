@@ -12,7 +12,6 @@ function resize(){
     // console.log("768px or larger");
     $('#navBtn').addClass("fa-times");
     $('#navBtn').removeClass("fa-bars");
-    //setTimeout(function() {$('.credit').removeClass('hide');}, 400);
 
   } 
 
@@ -22,7 +21,6 @@ function resize(){
     // console.log("smaller than 768px");
     $('#navBtn').addClass("fa-bars");
     $('#navBtn').removeClass("fa-times");
-   // $('.credit').addClass("hide");
 
   }
 }

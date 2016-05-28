@@ -24,9 +24,11 @@ body{
   display: none;
 }
 .title h1{
-  margin-bottom: 35px;
   font-size: 3.5em;
   font-family: 'Pacifico', cursive;
+}
+.title{
+  margin-bottom: 20px;
 }
 .blueDay {
   background-color: navy;

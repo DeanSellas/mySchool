@@ -111,7 +111,7 @@ function listUpcomingEvents() {
           // CHECK BLUE DAY
           if (event.summary === "BLUE DAY") {
             writeDay("Today is a Blue Day");
-            document.title = "mySchool | Blue Day"
+            document.title = "mySchool | Blue Day";
             console.log("Blue Moon");
             // alert("Blue Day");
             $('body').addClass("blueDay");
@@ -121,7 +121,7 @@ function listUpcomingEvents() {
           // CHECK GOLD DAY
           else if (event.summary === "GOLD DAY") {
             writeDay("Today is a Gold Day");
-            document.title = "mySchool | Gold Day"
+            document.title = "mySchool | Gold Day";
             console.log("King Midas");
             // alert("Gold Day");
             $('body').addClass("goldDay");
@@ -139,12 +139,11 @@ function listUpcomingEvents() {
       // IF WEEKEND
       if (checkWeekend === 0 || checkWeekend === 6) {
         writeDay("Its the Weekend");
+        document.title = "mySchool | Weekend";
         console.log("Everybody is working for the weekend");
         // alert("weekend");
       }
     }
-
-
 
   });
 }
@@ -158,4 +157,5 @@ function listUpcomingEvents() {
 function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
+  console.log(message);
 }

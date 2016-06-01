@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<!-- mySchool APP
-–––––––––––––––––––––––––––––––––––––––––––––––––– 
--->
+<html lang="en">
 
 <head>
 
   <!-- SETUP -->
-  <title>mySchool</title>
+  <title>mySchool | Homework</title>
   <meta charset="UTF-8">
   <meta name="author" content="Dean Sellas">
   <meta name="description" content="mySchool App">
@@ -25,19 +22,18 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
 
   <!-- JAVASCRIPT -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="assets/javascript/browser.js"></script>
-  <script src="assets/javascript/app.js"></script>
-  
-  <!-- ANGULAR JS-->
+  <script src="../assets/javascript/browser.js"></script>
+  <script src="../assets/javascript/app.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="assets/javascript/angular-route.min.js"></script>
-  <script src="assets/javascript/views.js"></script>
-  
+  <script src="angular-route.min.js"></script>
+  <script src="views.js"></script>
+
+
   <!-- API -->
   <script src="http://thespacecoder.com/app/assets/javascript/api.js"></script>
   <script src="https://apis.google.com/js/client.js?onload=checkAuth">
@@ -59,8 +55,9 @@
       <ul class="sidebar-nav">
 
         <li class="sidebar-brand sidebar-nav-link">
-          <a id="navTitle" href="#/">mySchool</a>
+          <a href="#/">mySchool</a>
         </li>
+
         <li>
           <a class="sidebar-nav-link" id="home" href="#/">Home</a>
         </li>
@@ -75,9 +72,7 @@
         </li>
 
       </ul>
-      
-      <p class="credit">App Created by <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a> and <a href="https://youtu.be/dQw4w9WgXcQ?t=18" target="_blank">Nicholas Horvat</a></p>
-      
+      <p class="credit">App Created by <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a></p>
     </div>
 
     <a href="#menu-toggle" class="btn" id="menu-toggle"><i id="navBtn" class="fa fa-2x" aria-hidden="true"></i></a>
@@ -88,7 +83,6 @@
 
     <div class="title">
       <h1>mySchool</h1>
-      <span id="date"></span>
     </div>
 
     <div class="hide" id="app">
@@ -107,12 +101,10 @@
   </div>
 
   <script>
-    
     // GETS NAV ICON CLICK
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
-
       if ($('#navBtn').hasClass("fa-bars") === true) {
 
         // console.log("bars");
@@ -128,9 +120,8 @@
       }
     });
     $('.sidebar-nav-link').click(setActive);
-    $('.sidebar-nav-link').click(listUpcomingEvents);
+    $('.sidebar-nav-link').click(setDay);
     $('.sidebar-nav-link').click(writeDay);
-    
   </script>
 
 </body>

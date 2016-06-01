@@ -4,7 +4,7 @@ var day = (new Date()).getDate();
 
 
 // CHECKS WINDOW SIZE
-function resize(){
+function resize() {
 
   // IF >= 768PX
   if (window.matchMedia("(min-width: 768px)").matches) {
@@ -13,7 +13,7 @@ function resize(){
     $('#navBtn').addClass("fa-times");
     $('#navBtn').removeClass("fa-bars");
 
-  } 
+  }
 
   // IF < 768PX
   else {
@@ -21,16 +21,36 @@ function resize(){
     // console.log("smaller than 768px");
     $('#navBtn').addClass("fa-bars");
     $('#navBtn').removeClass("fa-times");
-
   }
+}
+
+// SETS ACTIVE CLASS
+function setActive() {
+  setTimeout(function() {
+
+    if (window.location.hash.includes("homework") === true) {
+      $('.active').toggleClass("active");
+      $('#homework').toggleClass("active");
+    } else if (window.location.hash.includes("about") === true) {
+      $('.active').toggleClass("active");
+      $('#about').toggleClass("active");
+    } else if (window.location.hash.includes("support") === true) {
+      $('.active').toggleClass("active");
+      $('#support').toggleClass("active");
+    } else {
+      $('.active').toggleClass("active");
+      $('#home').toggleClass("active");
+    }
+  }, 50);
 }
 
 // SETS DATE
 function setDay() {
-  $('#date').text(month + '/' + day);
-
+    $('#date').text(month + '/' + day);
+    console.log(month+'/'+day);
 }
 
 // LOAD FUNTIONS
 $('body').ready(resize);
 $('body').ready(setDay);
+$('body').ready(setActive);

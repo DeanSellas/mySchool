@@ -59,6 +59,10 @@ body{
 }
 .offset{
   margin-left: 250px;
+<<<<<<< HEAD
+=======
+  margin-right: 0px;
+>>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
 }
 .form-group{text-align:left;}
 

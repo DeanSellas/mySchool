@@ -1,16 +1,27 @@
 <h1>Homework Page</h1>
+<<<<<<< HEAD
 <div class="container offset">
   <div class="row col-sm-6">
     
+=======
+<div class="container">
+  <div class="row col-sm-offset-3 col-sm-6">
+
+>>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
     <div class="form-group">
       <label for="usr">Assignment Name:</label>
       <input type="text" class="form-control" id="usr">
     </div>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
     <div class="form-group">
       <label for="class">Class:</label>
       <input type="text" class="form-control" id="class">
     </div>
+<<<<<<< HEAD
     
   </div>
 
@@ -29,3 +40,40 @@
   </div>
 
 </div>
+=======
+
+    <div class="form-group">
+      <label for="dueDate">Due Date:</label>
+      <input type="date" class="form-control" id="dueDate">
+    </div>
+
+    <div class="forum-group">
+      <button class="btn btn-default" id="addAssignment" onclick="">Add Assignment</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setInputDate(_id) {
+    var _dat = document.querySelector(_id);
+    var hoy = new Date(),
+      d = hoy.getDate(),
+      m = hoy.getMonth() + 1,
+      y = hoy.getFullYear(),
+      data;
+
+    if (d < 10) {
+      d = "0" + d;
+    };
+    if (m < 10) {
+      m = "0" + m;
+    };
+
+    data = y + "-" + m + "-" + d;
+    console.log(data);
+    _dat.value = data;
+  };
+
+  setInputDate("#dueDate");
+</script>
+>>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3

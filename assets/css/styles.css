@@ -57,6 +57,11 @@ body{
 .credit a:hover{
   color: #fff;
 }
+.offset{
+  margin-left: 250px;
+  margin-right: 0px;
+}
+.form-group{text-align:left;}
 
 #wrapper {
   padding-left: 0;

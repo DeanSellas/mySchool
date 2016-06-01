@@ -128,10 +128,11 @@ function listUpcomingEvents() {
             checkDay = 1;
           }
 
-          // IF NO EVENTS
-          else if(checkDay != 1) {
-            console.log("true")
-            writeDay("Sorry couldn't catch event from calendar");
+          // CHECKS FOR NO SCHOOL EVENT
+          if (event.summary.indexOf("NO SCHOOL") !== -1) {
+            writeDay("No School, Have a Good Day off");
+            console.log("no school")
+            checkDay = 1;
           }
         }
       }
@@ -142,6 +143,12 @@ function listUpcomingEvents() {
         document.title = "mySchool | Weekend";
         console.log("Everybody is working for the weekend");
         // alert("weekend");
+      }
+
+      // IF NO EVENTS
+      else if (checkDay != 1) {
+        console.log("true")
+        writeDay("Sorry couldn't catch event from calendar");
       }
     }
 

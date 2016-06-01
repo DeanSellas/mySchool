@@ -21,8 +21,8 @@ var app = angular
       .when('/about', {
         templateUrl: './assets/html/about.html',
       })
-      .when('/support', {
-        templateUrl: './assets/html/support.html',
+      .when('/school', {
+        templateUrl: './assets/html/school.html',
       })
       .otherwise({
         redirectTo: '/'

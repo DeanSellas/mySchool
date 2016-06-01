@@ -1,3 +1,26 @@
+/*
+/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// Author: Dean Sellas
+// Website: www.thespacecoder.com
+// Twiiter: twitter.com/TheSpaceCoder
+// Support: contact@thespacecoder.com
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+*/
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+-General Content
+-HomeWork
+-Navigation
+
+--------------------------------------------------*/
+
+/* GENERAL CONTENT
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 ::selection{
   background-color: white;
   color: black;
@@ -31,10 +54,10 @@ body{
   margin-bottom: 20px;
 }
 .blueDay {
-  background-color: navy;
+  background-color: #002e60;
 }
 .goldDay {
-  background-color: #ccac00;
+  background-color: #daa520;
 }
 .login {
   display: inline-block;
@@ -42,29 +65,18 @@ body{
 .btn{
   margin: 5px 10px;
 }
-.credit{
-  position: absolute;
-  font-size: .75rem;
-  bottom: 0px;
-  min-width: 200px;
-}
-.credit,
-.credit a,
-.credit a:focus{
-  color: #999;
-  text-decoration: none;
-}
-.credit a:hover{
-  color: #fff;
-}
-.offset{
-  margin-left: 250px;
-<<<<<<< HEAD
-=======
-  margin-right: 0px;
->>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
-}
+
+/* HOMEWORK
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .form-group{text-align:left;}
+.homeworkLabel{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+/* NAV
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 #wrapper {
   padding-left: 0;
@@ -108,7 +120,7 @@ body{
   margin-right: -250px;
 }
 
-/* Sidebar Styles */
+
 
 .sidebar-nav {
   position: absolute;
@@ -200,4 +212,19 @@ body{
 }
 #menu-toggle:hover{
   color: #ccc;
+}
+.credit{
+  position: absolute;
+  font-size: .75rem;
+  bottom: 0px;
+  min-width: 200px;
+}
+.credit,
+.credit a,
+.credit a:focus{
+  color: #999;
+  text-decoration: none;
+}
+.credit a:hover{
+  color: #fff;
 }

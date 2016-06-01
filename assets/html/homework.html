@@ -1,49 +1,22 @@
 <h1>Homework Page</h1>
-<<<<<<< HEAD
-<div class="container offset">
-  <div class="row col-sm-6">
-    
-=======
-<div class="container">
-  <div class="row col-sm-offset-3 col-sm-6">
 
->>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
+<div class="container ">
+  <div class="col-sm-6 col-sm-offset-3">
+
+
     <div class="form-group">
-      <label for="usr">Assignment Name:</label>
-      <input type="text" class="form-control" id="usr">
+      <label class="homeworkLabel" for="usr">Assignment Name:</label>
+      <input placeholder="Worksheet..." type="text" class="form-control" id="usr">
     </div>
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
     <div class="form-group">
-      <label for="class">Class:</label>
-      <input type="text" class="form-control" id="class">
+      <label class="homeworkLabel" for="class">Class:</label>
+      <input placeholder="Math..." type="text" class="form-control" id="class">
     </div>
-<<<<<<< HEAD
     
-  </div>
-
-  <div class="row form-group col-md-2">
-    <label for="block">Block:</label>
-    <select class="form-control" id="block">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-    </select>
-  </div>
-
-</div>
-=======
 
     <div class="form-group">
-      <label for="dueDate">Due Date:</label>
+      <label class="homeworkLabel" for="dueDate">Due Date:</label>
       <input type="date" class="form-control" id="dueDate">
     </div>
 
@@ -57,10 +30,10 @@
   function setInputDate(_id) {
     var _dat = document.querySelector(_id);
     var hoy = new Date(),
-      d = hoy.getDate(),
-      m = hoy.getMonth() + 1,
-      y = hoy.getFullYear(),
-      data;
+    d = hoy.getDate(),
+    m = hoy.getMonth() + 1,
+    y = hoy.getFullYear(),
+    data;
 
     if (d < 10) {
       d = "0" + d;
@@ -76,4 +49,4 @@
 
   setInputDate("#dueDate");
 </script>
->>>>>>> 91f44d4434b3a78d5390ee7a8810e6fe88f38ad3
+

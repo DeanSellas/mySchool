@@ -47,7 +47,7 @@ function setActive() {
 // SETS DATE
 function setDay() {
     $('#date').text(month + '/' + day);
-    console.log(month+'/'+day);
+    // console.log(month+'/'+day);
 }
 
 

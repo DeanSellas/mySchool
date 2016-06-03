@@ -1,31 +1,22 @@
 <html>
-<head>
-
-  <!-- CALENDAR API -->
-  <script type="text/javascript">
-
+  <head>
+    <script type="text/javascript">
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
-      var CLIENT_ID = '1010036669880-b47odlcdjj5124d5cbtvoo6mktu0u207.apps.googleusercontent.com';
+      var CLIENT_ID = '903500945114-chpbcc2dkele8lnrffk7ko0jtchkhd07.apps.googleusercontent.com';
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
-
-      // CALENDAR ID
-      var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.google.com';
-
-      // TEST CODE FOR DATE
-      var checkWeekend = (new Date()).getDay();
 
       /**
        * Check if current user has authorized this application.
        */
-       function checkAuth() {
+      function checkAuth() {
         gapi.auth.authorize(
-        {
-          'client_id': CLIENT_ID,
-          'scope': SCOPES.join(' '),
-          'immediate': true
-        }, handleAuthResult);
+          {
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' '),
+            'immediate': true
+          }, handleAuthResult);
       }
 
       /**
@@ -33,7 +24,7 @@
        *
        * @param {Object} authResult Authorization result.
        */
-       function handleAuthResult(authResult) {
+      function handleAuthResult(authResult) {
         var authorizeDiv = document.getElementById('authorize-div');
         if (authResult && !authResult.error) {
           // Hide auth UI, then load client library.
@@ -51,7 +42,7 @@
        *
        * @param {Event} event Button click event.
        */
-       function handleAuthClick(event) {
+      function handleAuthClick(event) {
         gapi.auth.authorize(
           {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
           handleAuthResult);
@@ -62,7 +53,7 @@
        * Load Google Calendar client library. List upcoming events
        * once client library is loaded.
        */
-       function loadCalendarApi() {
+      function loadCalendarApi() {
         gapi.client.load('calendar', 'v3', listUpcomingEvents);
       }
 
@@ -71,66 +62,34 @@
        * the authorized user's calendar. If no events are found an
        * appropriate message is printed.
        */
-       function listUpcomingEvents() {
-        //Gets events from google calendar
+      function listUpcomingEvents() {
         var request = gapi.client.calendar.events.list({
-          'calendarId': calendar,
+          'calendarId': 'primary',
           'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
-          'maxResults': 3,
+          'maxResults': 10,
           'orderBy': 'startTime'
         });
 
         request.execute(function(resp) {
           var events = resp.items;
-          writeDay('Upcoming events:');
+          appendPre('Upcoming events:');
 
-          
           if (events.length > 0) {
-
-            // IF WEEKDAY
-            if(checkWeekend !== 0 && checkWeekend !== 6){
-
-              for (i = 0; i < events.length; i++) {
-                var event = events[i];
-                var when = event.start.dateTime;
-                if (!when) {
-                  when = event.start.date;
-                }
-
-                // CHECK BLUE DAY
-                if(event.summary === "BLUE DAY"){
-                  writeDay("Blue");
-                  console.log("Blue Moon");
-                  alert("Blue Day");
-                }
-
-                // CHECK GOLD DAY
-                else if(event.summary === "GOLD DAY"){
-                  writeDay("Gold");
-                  console.log("King Midas");
-                  alert("Gold Day");
-                }
-
-              // writeDay(event.summary /*+ ' (' + when + ')'*/)
-              
+            for (i = 0; i < events.length; i++) {
+              var event = events[i];
+              var when = event.start.dateTime;
+              if (!when) {
+                when = event.start.date;
+              }
+              appendPre(event.summary + ' (' + when + ')')
             }
+          } else {
+            appendPre('No upcoming events found.');
           }
 
-          // IF WEEKEND
-          if(checkWeekend === 0 || checkWeekend === 6){
-            console.log("Everybody is working for the weekend");
-            writeDay("Its the Weekend");
-            // alert("weekend");
-          }
-
-        }
-
-        // IF NO EVENTS
-        else {writeDay("Sorry couldn't catch event from calendar");}
-
-      });
+        });
       }
 
       /**
@@ -139,21 +98,15 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
-       function writeDay(message) {
-        /* ORIGINAL CODE
-        * var pre = document.getElementById('output');
-        * var textContent = document.createTextNode(message + '\n');
-        * pre.appendChild(textContent);
-        */
-
-        // JQUERY
-        $('#output').append(message +"\n");
+      function appendPre(message) {
+        var pre = document.getElementById('output');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
       }
 
     </script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body>
     <div id="authorize-div" style="display: none">
@@ -165,4 +118,4 @@
     </div>
     <pre id="output"></pre>
   </body>
-  </html>
+</html>

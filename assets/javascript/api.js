@@ -18,7 +18,7 @@ var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.googl
 var checkWeekend = (new Date()).getDay();
 
 // QUICK HOTFIX
-var checkDay = 0;
+var checkDay, isHomework = 0;
 
 /**
  * Check if current user has authorized this application.
@@ -73,15 +73,14 @@ function handleAuthClick(event) {
  * once client library is loaded.
  */
 function loadCalendarApi() {
-  gapi.client.load('calendar', 'v3', listUpcomingEvents);
+  gapi.client.load('calendar', 'v3', blueGold);
+  gapi.client.load('calendar', 'v3', listUpcomingHomework);
 }
 
 /**
- * Print the summary and start datetime/date of the next ten events in
- * the authorized user's calendar. If no events are found an
- * appropriate message is printed.
+ * Displays if its a Blue or Gold Day
  */
-function listUpcomingEvents() {
+function blueGold() {
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
     // 'calendarId': calendar, SCHOOL CALENDAR NOT UPDATED BECAUSE ITS THE SUMMER
@@ -156,18 +155,96 @@ function listUpcomingEvents() {
 }
 
 /**
+ * Print the summary and start date of the next ten homework events in
+ * the authorized user's calendar. If no events are found an
+ * appropriate message is printed.
+ */
+function listUpcomingHomework() {
+  var request = gapi.client.calendar.events.list({
+    'calendarId': 'primary',
+    'timeMin': (new Date()).toISOString(),
+    'showDeleted': false,
+    'singleEvents': true,
+    'maxResults': 10,
+    'orderBy': 'startTime'
+  });
+
+  request.execute(function(resp) {
+    var events = resp.items;
+
+    if (events.length > 0) {
+      for (i = 0; i < events.length; i++) {
+        var event = events[i];
+        var when = event.start.date;
+        if (!when) {
+          when = event.start.date;
+        }
+
+        var str = event.summary;
+        var test = str.length;
+        if (str.indexOf('HOMEWORK') > -1) {
+          console.log(str.substring(11, test) + '\nDue on ' + when.substring(5, 100));
+          writeHomework(str.substring(11, test) + ' Due on ' + when.substring(5, 100));
+          isHomework = 1;
+        }
+      }
+    }
+    if (isHomework != 1) {
+      console.log("no homework found");
+      writeHomework('No upcoming homework found!');
+    }
+
+  });
+}
+
+/**
  * Gets Homework put into the input boxes and adds it to
  * the authorized user's calendar.
  */
 function addHomework() {
+  // QUICK FIX! VERY SLOPPY!!!
+  var hoy = new Date(),
+    d = hoy.getDate() + 1,
+    m = hoy.getMonth() + 1,
+    y = hoy.getFullYear(),
+    data;
+  if (d < 10) {
+    d = "0" + d;
+  }
+  if (m < 10) {
+    m = "0" + m;
+  }
+  data = y + "-" + m + "-" + d;
+
   var homeworkName = $('#assignment').val();
   var className = $('#class').val();
-  
-  console.log(homeworkName + '\n' + className);
+  var dueDate = $('#dueDate').val();
+
+  console.log(homeworkName + '\n' + className + '\n' + dueDate);
   alert("Homework Added To Calendar");
-  
+
   $('#class').val("");
   $('#assignment').val("");
+
+  var homeworkEvent = {
+    "start": {
+      "date": dueDate //+'T06:00:00-07:00'
+    },
+    "end": {
+      "date": data //+'T22:00:00-07:00'
+    },
+    "summary": "HOMEWORK - " + homeworkName,
+    'description': 'Homework for ' + className + '. It is due on ' + dueDate
+  }
+
+  var request = gapi.client.calendar.events.insert({
+    'calendarId': 'primary',
+    'resource': homeworkEvent
+  });
+
+  request.execute(function(homeworkEvent) {
+    console.log('Event created: ' + homeworkEvent.htmlLink);
+  });
 }
 
 /**
@@ -179,5 +256,9 @@ function addHomework() {
 function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
-  console.log(message);
+}
+
+function writeHomework(testVar) {
+  // DISPLAYS MESSAGE
+  $('#upcomingHomework').append('<p>' + testVar + '</p>' + '\n');
 }

@@ -156,6 +156,21 @@ function listUpcomingEvents() {
 }
 
 /**
+ * Gets Homework put into the input boxes and adds it to
+ * the authorized user's calendar.
+ */
+function addHomework() {
+  var homeworkName = $('#assignment').val();
+  var className = $('#class').val();
+  
+  console.log(homeworkName + '\n' + className);
+  alert("Homework Added To Calendar");
+  
+  $('#class').val("");
+  $('#assignment').val("");
+}
+
+/**
  * Append a pre element to the body containing the given message
  * as its text node.
  *

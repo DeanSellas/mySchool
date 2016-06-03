@@ -25,14 +25,17 @@
   background-color: white;
   color: black;
 }
+
 .goldDay ::selection{
   background-color: #1d1f1f;
   color: white;
 }
+
 .blueDay ::selection{
   background-color: #1d1f1f;
   color: white;
 }
+
 #sidebar-wrapper ::selection{
   background-color: rgba(255,255,255,0.2);
   color: white;
@@ -43,25 +46,32 @@ body{
   background-color: #1d1f1f;
   color: white;
 }
+
 .hide {
   display: none;
 }
+
 .title h1{
   font-size: 3.5em;
   font-family: 'Pacifico', cursive;
 }
+
 .title{
   margin-bottom: 20px;
 }
+
 .blueDay {
   background-color: #002e60;
 }
+
 .goldDay {
   background-color: #daa520;
 }
+
 .login {
   display: inline-block;
 }
+
 .btn{
   margin: 5px 10px;
 }
@@ -70,6 +80,7 @@ body{
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .form-group{text-align:left;}
+
 .homeworkLabel{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -119,8 +130,6 @@ body{
   position: absolute;
   margin-right: -250px;
 }
-
-
 
 .sidebar-nav {
   position: absolute;

@@ -34,9 +34,9 @@ function setActive() {
     } else if (window.location.hash.includes("about") === true) {
       $('.active').toggleClass("active");
       $('#about').toggleClass("active");
-    } else if (window.location.hash.includes("support") === true) {
+    } else if (window.location.hash.includes("school") === true) {
       $('.active').toggleClass("active");
-      $('#support').toggleClass("active");
+      $('#school').toggleClass("active");
     } else {
       $('.active').toggleClass("active");
       $('#home').toggleClass("active");
@@ -49,6 +49,7 @@ function setDay() {
     $('#date').text(month + '/' + day);
     console.log(month+'/'+day);
 }
+
 
 // LOAD FUNTIONS
 $('body').ready(resize);

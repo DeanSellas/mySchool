@@ -165,13 +165,13 @@ var checkDay, isHomework = 0;
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 10,
+    'maxResults': 20,
     'orderBy': 'startTime'
   });
 
   request.execute(function(resp) {
     var events = resp.items;
-
+    
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -179,7 +179,6 @@ var checkDay, isHomework = 0;
         if (!when) {
           when = event.start.date;
         }
-
         var str = event.summary;
         var strLength = str.length;
         if (str.indexOf('HOMEWORK') > -1) {
@@ -193,7 +192,7 @@ var checkDay, isHomework = 0;
       console.log("no homework found");
       writeHomework('No upcoming homework found!');
     }
-
+    
   });
 }
 
@@ -203,14 +202,13 @@ var checkDay, isHomework = 0;
  */
  function addHomework() {
 
-
  /*
   * WORKS!
   * WORKING DATE CODE I WILL COMMENT LATER
   * WHEN I FIGURE OUT WHAT I DID!
   */
   var date = $('#dueDate').val().split("-");
-  console.log(date, $('#dueDate').val())
+  console.log(date, $('#dueDate').val());
   d = date[2];
   day = 0 + parseInt(d) + 1;
   m = date[1];
@@ -220,11 +218,12 @@ var checkDay, isHomework = 0;
 
   var lastDayDate = new Date(year, month + 1, 0);
 
+  // IF LAST DAY OF MONTH GO TO FIRST DAY OF NEXT MONTH
   if(lastDayDate.getDate() === day){
     day = 1;
     month ++;
-    console.log(month);
-    console.log(day);
+    // console.log(month);
+    // console.log(day);
   }
 
   // I HAVE NO CLUE WHAT THE F$$K I AM DOING!
@@ -239,17 +238,21 @@ var checkDay, isHomework = 0;
   $('#class').val("");
   $('#assignment').val("");
 
+  // INFO FOR EVENT
   var homeworkEvent = {
+
+    "summary": "HOMEWORK - " + homeworkName,
+    'description': 'Homework for ' + className + '. It is due on ' + dueDate,
+
     "start": {
-      "date": dueDate //+'T06:00:00-07:00'
+      "date": dueDate
     },
     "end": {
-      "date": year+'-'+0+month+'-'+0+day //+'T22:00:00-07:00'
+      "date": year+'-'+0+month+'-'+0+day
     },
-    "summary": "HOMEWORK - " + homeworkName,
-    'description': 'Homework for ' + className + '. It is due on ' + dueDate
   }
 
+  // ADDS EVENT
   var request = gapi.client.calendar.events.insert({
     'calendarId': 'primary',
     'resource': homeworkEvent
@@ -266,12 +269,15 @@ var checkDay, isHomework = 0;
  *
  * @param {string} message Text to be placed in pre element.
  */
- function writeDay(message) {
+ function writeDay(message){
   // DISPLAYS MESSAGE
   $('#output').text(message);
 }
 
-function writeHomework(homeworkList) {
-  // DISPLAYS MESSAGE
-  $('#upcomingHomework').append('<p>' + homeworkList + '</p>' + '\n');
+function writeHomework(homeworkList){
+
+  if($('#homeworkListP').text() != homeworkList){
+    // DISPLAYS MESSAGE
+    $('#upcomingHomework').append('<p id="homeworkListP">' + homeworkList + '</p>' + '\n');
+  }
 }

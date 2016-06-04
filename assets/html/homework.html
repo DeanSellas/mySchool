@@ -27,8 +27,8 @@
 </div>
 
 <script>
- function setInputDate(_id) {
-    var _dat = document.querySelector(_id);
+ function setInputDate() {
+    var _dat = document.querySelector("#dueDate");
     var hoy = new Date(),
     d = hoy.getDate(),
     m = hoy.getMonth() + 1,
@@ -43,10 +43,10 @@
     }
 
     data = y + "-" + m + "-" + d;
-    // console.log('Today is: ' + data);
+    console.log('Today is: ' + data);
     _dat.value = data;
   }
 
-  setInputDate("#dueDate");
+  setInputDate();
 </script>
 

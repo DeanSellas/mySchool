@@ -23,7 +23,7 @@ var checkDay, isHomework = 0;
 /**
  * Check if current user has authorized this application.
  */
-function checkAuth() {
+ function checkAuth() {
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES.join(' '),
@@ -36,7 +36,7 @@ function checkAuth() {
  *
  * @param {Object} authResult Authorization result.
  */
-function handleAuthResult(authResult) {
+ function handleAuthResult(authResult) {
   var authorizeDiv = document.getElementById('authorize-div');
 
   if (authResult && !authResult.error) {
@@ -58,13 +58,13 @@ function handleAuthResult(authResult) {
  *
  * @param {Event} event Button click event.
  */
-function handleAuthClick(event) {
+ function handleAuthClick(event) {
   gapi.auth.authorize({
-      client_id: CLIENT_ID,
-      scope: SCOPES,
-      immediate: false
-    },
-    handleAuthResult);
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    immediate: false
+  },
+  handleAuthResult);
   return false;
 }
 
@@ -72,7 +72,7 @@ function handleAuthClick(event) {
  * Load Google Calendar client library. List upcoming events
  * once client library is loaded.
  */
-function loadCalendarApi() {
+ function loadCalendarApi() {
   gapi.client.load('calendar', 'v3', blueGold);
   gapi.client.load('calendar', 'v3', listUpcomingHomework);
 }
@@ -80,7 +80,7 @@ function loadCalendarApi() {
 /**
  * Displays if its a Blue or Gold Day
  */
-function blueGold() {
+ function blueGold() {
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
     // 'calendarId': calendar, SCHOOL CALENDAR NOT UPDATED BECAUSE ITS THE SUMMER
@@ -159,7 +159,7 @@ function blueGold() {
  * the authorized user's calendar. If no events are found an
  * appropriate message is printed.
  */
-function listUpcomingHomework() {
+ function listUpcomingHomework() {
   var request = gapi.client.calendar.events.list({
     'calendarId': 'primary',
     'timeMin': (new Date()).toISOString(),
@@ -181,10 +181,10 @@ function listUpcomingHomework() {
         }
 
         var str = event.summary;
-        var test = str.length;
+        var strLength = str.length;
         if (str.indexOf('HOMEWORK') > -1) {
-          console.log(str.substring(11, test) + '\nDue on ' + when.substring(5, 100));
-          writeHomework(str.substring(11, test) + ' Due on ' + when.substring(5, 100));
+          console.log(str.substring(11, strLength) + '\nDue on ' + when.substring(5, 100));
+          writeHomework(str.substring(11, strLength) + ' Due on ' + when.substring(5, 100));
           isHomework = 1;
         }
       }
@@ -201,20 +201,33 @@ function listUpcomingHomework() {
  * Gets Homework put into the input boxes and adds it to
  * the authorized user's calendar.
  */
-function addHomework() {
-  // QUICK FIX! VERY SLOPPY!!!
-  var hoy = new Date(),
-    d = hoy.getDate() + 1,
-    m = hoy.getMonth() + 1,
-    y = hoy.getFullYear(),
-    data;
-  if (d < 10) {
-    d = "0" + d;
+ function addHomework() {
+
+
+ /*
+  * WORKS!
+  * WORKING DATE CODE I WILL COMMENT LATER
+  * WHEN I FIGURE OUT WHAT I DID!
+  */
+  var date = $('#dueDate').val().split("-");
+  console.log(date, $('#dueDate').val())
+  d = date[2];
+  day = 0 + parseInt(d) + 1;
+  m = date[1];
+  month = parseInt(m, 10);
+  year = date[0];
+  console.log(year+'-'+month+'-'+0+day);
+
+  var lastDayDate = new Date(year, month + 1, 0);
+
+  if(lastDayDate.getDate() === day){
+    day = 1;
+    month ++;
+    console.log(month);
+    console.log(day);
   }
-  if (m < 10) {
-    m = "0" + m;
-  }
-  data = y + "-" + m + "-" + d;
+
+  // I HAVE NO CLUE WHAT THE F$$K I AM DOING!
 
   var homeworkName = $('#assignment').val();
   var className = $('#class').val();
@@ -231,7 +244,7 @@ function addHomework() {
       "date": dueDate //+'T06:00:00-07:00'
     },
     "end": {
-      "date": data //+'T22:00:00-07:00'
+      "date": year+'-'+0+month+'-'+0+day //+'T22:00:00-07:00'
     },
     "summary": "HOMEWORK - " + homeworkName,
     'description': 'Homework for ' + className + '. It is due on ' + dueDate
@@ -253,12 +266,12 @@ function addHomework() {
  *
  * @param {string} message Text to be placed in pre element.
  */
-function writeDay(message) {
+ function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
 }
 
-function writeHomework(testVar) {
+function writeHomework(homeworkList) {
   // DISPLAYS MESSAGE
-  $('#upcomingHomework').append('<p>' + testVar + '</p>' + '\n');
+  $('#upcomingHomework').append('<p>' + homeworkList + '</p>' + '\n');
 }

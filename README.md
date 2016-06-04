@@ -4,20 +4,22 @@ mySchool is an app I am creating for Android, IOS, and Windows phones for my sch
 
 ## Current Features
 
-* Shows what day it is (Blue or Gold)
+* Shows what day it is (Blue or Gold for Glenbrook South)
 * Shows Month and Day of year
 * Login to Google Account (for api and homework feature that is comming soon)
+* Add your Homework!
+* Shows Upcomming homework assignments on Home Page
 
 ## Planned Features
 
 * Show Clubs for the day
-* Add your Homework
+* ~~Add your Homework~~ (Added in commit [8015ab0](https://github.com/TheSpaceCoder/mySchool/commit/8015ab0b95a0d84fc21c2b3fff2640c6a340911d))
 * Push Notifications for clubs and homework
 * Find school by an id (to help with porting to other schools)
 
 ## Want this for your school?
 
-Because this is currently open source feel free to fork it and modify it to your liking. But know that I am not responsible for any of these builds and will not offer support to unoffical builds. All I ask if you fork this for your own project is you give me credit in your build of this app.
+Because this is currently open source feel free to fork it and modify it to your liking. But know that I am not responsible for any of these builds and will not offer support to unoffical builds. All I ask if you fork this for your own project is you give me credit in your version of the app.
 
 I am also willing to port it to your school so please do not hessitate to send me an email at contact@thespacecoder.com. So we can discuss this app comming to your school.
 

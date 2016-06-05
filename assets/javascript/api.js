@@ -282,8 +282,5 @@ function writeHomework(homeworkList){
 
     // DISPLAYS MESSAGE
     $('#upcomingHomework').append('<p id="'+i+'">' + homeworkList + '</p>' + '\n');
-
-    // HOTFIX FOR REPEATING HOMEWORK BUG
-    displayLoop++;
   }
 }

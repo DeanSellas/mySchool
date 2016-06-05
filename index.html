@@ -53,7 +53,7 @@
 
 <body ng-app="mySchoolApp" onresize="resize()">
 
-  <div id="wrapper">
+  <div id="wrapper" class="expanded">
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
@@ -113,12 +113,14 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
 
+      // SHOW NAV
       if ($('#navBtn').hasClass("fa-bars") === true) {
 
         // console.log("bars");
         $('#navBtn').addClass("fa-times");
         $('#navBtn').removeClass("fa-bars");
-      } 
+      }
+      // HIDE NAV
       else if ($('#navBtn').hasClass("fa-times") === true) {
 
         // console.log("times");
@@ -126,6 +128,7 @@
         $('#navBtn').removeClass("fa-times");
       }
     });
+    
     // UPDATES FUNCTIONS IN REAL TIME
     $('.sidebar-nav-link').click(setActive);
     $('.sidebar-nav-link').click(blueGold);

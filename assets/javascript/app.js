@@ -8,19 +8,24 @@ function resize() {
 
   // IF >= 768PX
   if (window.matchMedia("(min-width: 768px)").matches) {
-
-    // console.log("768px or larger");
-    $('#navBtn').addClass("fa-times");
-    $('#navBtn').removeClass("fa-bars");
-
+    if($('#wrapper').hasClass("toggled") === false){
+      // console.log("768px or larger");
+      $('#navBtn').addClass("fa-times");
+      $('#navBtn').removeClass("fa-bars");
+    }
   }
 
   // IF < 768PX
   else {
 
-    // console.log("smaller than 768px");
     $('#navBtn').addClass("fa-bars");
     $('#navBtn').removeClass("fa-times");
+    
+    if($('#wrapper').hasClass("toggled") === true){
+      $('#navBtn').addClass("fa-bars");
+      $('#navBtn').removeClass("fa-times");
+      $('#wrapper').removeClass("toggled");
+    }
   }
 }
 
@@ -50,8 +55,8 @@ function setActive() {
 // SETS DATE
 function setDay() {
   $('#date').text(month + '/' + day);
-    // console.log(month+'/'+day);
-  }
+  // console.log(month+'/'+day);
+}
 
 // LOAD FUNTIONS
 $('body').ready(resize);

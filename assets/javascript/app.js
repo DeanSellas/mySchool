@@ -31,13 +31,16 @@ function setActive() {
     if (window.location.hash.includes("homework") === true) {
       $('.active').toggleClass("active");
       $('#homework').toggleClass("active");
-    } else if (window.location.hash.includes("about") === true) {
+    }
+    else if (window.location.hash.includes("about") === true) {
       $('.active').toggleClass("active");
       $('#about').toggleClass("active");
-    } else if (window.location.hash.includes("school") === true) {
+    }
+    else if (window.location.hash.includes("school") === true) {
       $('.active').toggleClass("active");
       $('#school').toggleClass("active");
-    } else {
+    }
+    else {
       $('.active').toggleClass("active");
       $('#home').toggleClass("active");
     }
@@ -46,10 +49,9 @@ function setActive() {
 
 // SETS DATE
 function setDay() {
-    $('#date').text(month + '/' + day);
+  $('#date').text(month + '/' + day);
     // console.log(month+'/'+day);
-}
-
+  }
 
 // LOAD FUNTIONS
 $('body').ready(resize);

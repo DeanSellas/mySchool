@@ -18,7 +18,7 @@ var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.googl
 var checkWeekend = (new Date()).getDay();
 
 // QUICK HOTFIX
-var checkDay, isHomework = 0;
+var checkDay, isHomework, displayLoop = 0;
 
 /**
  * Check if current user has authorized this application.
@@ -45,8 +45,8 @@ var checkDay, isHomework = 0;
     $('#authorizeDiv').addClass('hide');
     // SHOW APP
     $('#app').removeClass("hide");
-
-  } else {
+  }
+  else {
     // Show auth UI, allowing the user to initiate authorization by
     // clicking authorize button.
     $('#authorizeDiv').removeClass('hide');
@@ -188,6 +188,8 @@ var checkDay, isHomework = 0;
         }
       }
     }
+
+    // IF NO HOMEWORK EVENT IS FOUND
     if (isHomework != 1) {
       console.log("no homework found");
       writeHomework('No upcoming homework found!');
@@ -275,9 +277,13 @@ var checkDay, isHomework = 0;
 }
 
 function writeHomework(homeworkList){
-
-  if($('#homeworkListP').text() != homeworkList){
+  // FIXES REPEATING HOMEWORK BUG
+  if($('#'+i).text() != homeworkList){
+    
     // DISPLAYS MESSAGE
-    $('#upcomingHomework').append('<p id="homeworkListP">' + homeworkList + '</p>' + '\n');
+    $('#upcomingHomework').append('<p id="'+i+'">' + homeworkList + '</p>' + '\n');
+
+    // HOTFIX FOR REPEATING HOMEWORK BUG
+    displayLoop++;
   }
 }

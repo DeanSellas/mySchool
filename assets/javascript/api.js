@@ -174,13 +174,18 @@ var checkDay, isHomework = 0;
     
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
+        
         var event = events[i];
         var when = event.start.date;
         if (!when) {
           when = event.start.date;
         }
+        
+        // EVENT NAME
         var str = event.summary;
         var strLength = str.length;
+        
+        // IF CATCHES HOMEWORK EVENT
         if (str.indexOf('HOMEWORK') > -1) {
           console.log(str.substring(11, strLength) + '\nDue on ' + when.substring(5, 100));
           writeHomework(str.substring(11, strLength) + ' Due on ' + when.substring(5, 100));
@@ -206,7 +211,7 @@ var checkDay, isHomework = 0;
 
  /*
   * WORKS!
-  * WORKING DATE CODE I WILL COMMENT LATER
+  * WORKING CODE I WILL COMMENT LATER
   * WHEN I FIGURE OUT WHAT I DID!
   */
   var date = $('#dueDate').val().split("-");
@@ -218,6 +223,7 @@ var checkDay, isHomework = 0;
   year = date[0];
   console.log(year+'-'+month+'-'+0+day);
 
+  // GETS LAST DAY OF MONTH
   var lastDayDate = new Date(year, month + 1, 0);
 
   // IF LAST DAY OF MONTH GO TO FIRST DAY OF NEXT MONTH
@@ -243,14 +249,15 @@ var checkDay, isHomework = 0;
   // INFO FOR EVENT
   var homeworkEvent = {
 
-    "summary": "HOMEWORK - " + homeworkName,
+    "summary": "HOMEWORK - " + homeworkName + " for " + className,
     'description': 'Homework for ' + className + '. It is due on ' + dueDate,
 
     "start": {
       "date": dueDate
     },
+    // 0 BEFORE DATE AND MONTH F&&KS EVERYTHING UP!
     "end": {
-      "date": year+'-'+0+month+'-'+0+day
+      "date": year+'-'+month+'-'+day
     },
   }
 
@@ -259,7 +266,8 @@ var checkDay, isHomework = 0;
     'calendarId': 'primary',
     'resource': homeworkEvent
   });
-
+  
+   // IF EVENT CREATED
   request.execute(function(homeworkEvent) {
     console.log('Event created: ' + homeworkEvent.htmlLink);
   });

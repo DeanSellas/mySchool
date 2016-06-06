@@ -79,6 +79,16 @@ body{
 .subsection{
   margin-top: 40px;
 }
+
+a,
+a:hover,
+a:focus{
+  color: white;
+}
+
+.paragraph{
+  text-indent: 3em;
+}
 /* HOMEWORK
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

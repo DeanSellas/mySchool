@@ -133,6 +133,13 @@ var checkDay, isHomework = 0;
             console.log("no school")
             checkDay = 1;
           }
+
+          // CHECKS FOR FINALS
+          if (event.summary.indexOf("Final Exams") !== -1) {
+            writeDay("Finals Exams!");
+            console.log("no school")
+            checkDay = 1;
+          }
         }
       }
 
@@ -160,6 +167,24 @@ var checkDay, isHomework = 0;
  * appropriate message is printed.
  */
  function listUpcomingHomework() {
+
+  // GETS TODAY'S DATE
+  var todayDate = new Date(),
+  d = todayDate.getDate(),
+  m = todayDate.getMonth() + 1,
+  today;
+
+  if (d < 10) {
+    d = "0" + d;
+  }
+  if (m < 10) {
+    m = "0" + m;
+  }
+
+  today = m + "-" + d;
+  console.log('Today is: ' + today);
+
+
   var request = gapi.client.calendar.events.list({
     'calendarId': 'primary',
     'timeMin': (new Date()).toISOString(),
@@ -174,7 +199,7 @@ var checkDay, isHomework = 0;
     
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
-        
+
         var event = events[i];
         var when = event.start.date;
         if (!when) {
@@ -189,6 +214,12 @@ var checkDay, isHomework = 0;
         if (str.indexOf('HOMEWORK') > -1) {
           console.log(str.substring(11, strLength) + '\nDue on ' + when.substring(5, 100));
           writeHomework(str.substring(11, strLength) + ' Due on ' + when.substring(5, 100));
+          
+          // ALERT IF HOMEWORK IS DUE TODAY
+          if(when.substring(5,100) == today && isHomework != 1){
+            alert("You Have Homework due today!");
+          }
+
           isHomework = 1;
         }
       }
@@ -268,22 +299,18 @@ var checkDay, isHomework = 0;
   });
   
    // IF EVENT CREATED
-  request.execute(function(homeworkEvent) {
+   request.execute(function(homeworkEvent) {
     console.log('Event created: ' + homeworkEvent.htmlLink);
   });
-}
+ }
 
-/**
- * Append a pre element to the body containing the given message
- * as its text node.
- *
- * @param {string} message Text to be placed in pre element.
+/*
+ * WRITES THE DAY OF WEEK (BLUE OR GOLD) AND WRITES THE HOMEWORK
  */
  function writeDay(message){
   // DISPLAYS MESSAGE
   $('#output').text(message);
 }
-
 function writeHomework(homeworkList){
   // FIXES REPEATING HOMEWORK BUG
   if($('#'+i).text() != homeworkList){

@@ -88,7 +88,7 @@ var checkDay, isHomework = 0;
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 3,
+    'maxResults': 5,
     'orderBy': 'startTime'
   });
 
@@ -118,7 +118,7 @@ var checkDay, isHomework = 0;
           }
 
           // CHECK GOLD DAY
-          else if (event.summary === "GOLD DAY") {
+          else if (event.summary === "GOLD DAY" && checkDay === 0) {
             writeDay("Today is a Gold Day");
             document.title = "mySchool | Gold Day";
             console.log("King Midas");

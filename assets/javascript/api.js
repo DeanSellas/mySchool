@@ -18,7 +18,8 @@ var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.googl
 var checkWeekend = (new Date()).getDay();
 
 // QUICK HOTFIX
-var checkDay, isHomework = 0;
+var checkDay = 0;
+var isHomework = 0;
 
 /**
  * Check if current user has authorized this application.

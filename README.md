@@ -24,7 +24,7 @@ Because this is currently open source feel free to fork it and modify it to your
 I am also willing to port it to your school so please do not hessitate to send me an email at contact@thespacecoder.com. So we can discuss this app comming to your school.
 
 ## Credits
-<a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a>: Head Programmer
+<a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a>: Lead Programmer and Designer
 
 Nicholas Horvat: Designer
 

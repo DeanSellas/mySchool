@@ -6,9 +6,9 @@ mySchool is an app I am creating for Android, IOS, and Windows phones for my sch
 
 * Shows what day it is (Blue or Gold for Glenbrook South)
 * Shows Month and Day of year
-* Login to Google Account (for api and homework feature that is comming soon)
+* Login to Google Account (for api and homework feature)
 * Add your Homework!
-* Shows Upcomming homework assignments on Home Page
+* Shows Upcomming homework assignments on Home Page and alerts if homework is due that day
 
 ## Planned Features
 

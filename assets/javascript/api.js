@@ -138,7 +138,7 @@ var isHomework = 0;
           // CHECKS FOR FINALS
           if (event.summary.indexOf("Final Exams") !== -1) {
             writeDay("Finals Exams!");
-            console.log("no school")
+            console.log("Finals Exams");
             checkDay = 1;
           }
         }

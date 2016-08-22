@@ -12,7 +12,7 @@ var CLIENT_ID = '903500945114-chpbcc2dkele8lnrffk7ko0jtchkhd07.apps.googleuserco
 var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
 // CALENDAR ID
-var calendar = 'glenbrook225.org_t6icimruvi67t0hj6c8imt2ft8@group.calendar.google.com';
+var calendar = 'glenbrook225.org_5ubk7oftem2kuc5gm5j6pjgauc@group.calendar.google.com';
 
 // GET DAY OF WEEK
 var checkWeekend = (new Date()).getDay();
@@ -84,8 +84,8 @@ var isHomework = 0;
  function blueGold() {
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
-    // 'calendarId': calendar, SCHOOL CALENDAR NOT UPDATED BECAUSE ITS THE SUMMER
-    'calendarId': 'dgsellas@gmail.com', // WORKING OFF MY CALENDAR
+    'calendarId': calendar,
+    // 'calendarId': 'dgsellas@gmail.com', SCHOOL STARTED AGAIN BACK TO SCHOOLS CALENDARf
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
@@ -140,6 +140,12 @@ var isHomework = 0;
             writeDay("Finals Exams!");
             console.log("Finals Exams");
             checkDay = 1;
+          }
+          
+          // CHECKS FOR FIRST DAY OF SCHOOL
+          if (event.summary.indexOf("FIRST DAY OF SCHOOL") !== -1) {
+            alert("First Day of School Good Luck!");
+            console.log("First Day");
           }
         }
       }

@@ -109,7 +109,7 @@ var isHomework = 0;
           }
 
           // CHECK BLUE DAY
-          if (event.summary === "BLUE DAY") {
+          if (event.summary === "BLUE DAY" && checkDay === 0) {
             writeDay("Today is a Blue Day");
             document.title = "mySchool | Blue Day";
             console.log("Blue Moon");

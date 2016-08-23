@@ -7,6 +7,18 @@ GIT REPO: https://github.com/TheSpaceCoder/mySchool
 SUPPORT: https://github.com/TheSpaceCoder/mySchool/issues
 LICENSE: MIT LICENSE
 
+PUBLIC RELEASE V1.0.3
+---------------------------------------------
+ADDED: FIRST DAY OF SCHOOL EVENT
+
+CHANGED: CALENDAR
+
+REMOVED: TEST.HTML
+
+FIXED: BLUE GOLD BUGFIX
+
+
+
 PUBLIC RELEASE V1.0
 ---------------------------------------------
 ADDED: SHOW UPCOMING HOMEWORK
@@ -22,6 +34,7 @@ CHANGED: STYLING
 FIXED: KILLED BUGS
 
 
+
 BETA V0.8.5
 ---------------------------------------------
 ADDED: ANGULAR JS
@@ -35,6 +48,7 @@ CHANGED: CODE CLEANUP
 CHANGED: STYLING
 
 FIXED: KILLED BUGS
+
 
 
 ALPHA V0.7.5

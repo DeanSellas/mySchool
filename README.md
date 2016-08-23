@@ -14,6 +14,7 @@ mySchool is an app I am creating for Android, IOS, and Windows phones for my sch
 
 * Show Clubs for the day
 * ~~Add your Homework~~ (Added in commit [8015ab0](https://github.com/TheSpaceCoder/mySchool/commit/8015ab0b95a0d84fc21c2b3fff2640c6a340911d))
+* Add Notes to Homework
 * Push Notifications for clubs and homework
 * Find school by an id (to help with porting to other schools)
 

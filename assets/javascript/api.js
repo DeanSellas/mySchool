@@ -276,19 +276,21 @@ var isHomework = 0;
 
   var homeworkName = $('#assignment').val();
   var className = $('#class').val();
+  var homeworkDescription = $('#description').val();
   var dueDate = $('#dueDate').val();
 
-  console.log(homeworkName + '\n' + className + '\n' + dueDate);
+  console.log(homeworkName + '\n' + className + '\n' + dueDate + '\n' + homeworkDescription);
   alert("Homework Added To Calendar");
 
   $('#class').val("");
   $('#assignment').val("");
+  $('#description').val("");
 
   // INFO FOR EVENT
   var homeworkEvent = {
 
     "summary": "HOMEWORK - " + homeworkName + " for " + className,
-    'description': 'Homework for ' + className + '. It is due on ' + dueDate,
+    'description': 'Homework for ' + className + '. It is due on ' + dueDate + '\nDescription: ' + homeworkDescription,
 
     "start": {
       "date": dueDate

@@ -7,6 +7,13 @@ GIT REPO: https://github.com/TheSpaceCoder/mySchool
 SUPPORT: https://github.com/TheSpaceCoder/mySchool/issues
 LICENSE: MIT LICENSE
 
+
+CURRENT VERSION
+---------------------------------------------
+ADDED: HOMEWORK DESCRIPTION
+
+
+
 PUBLIC RELEASE V1.0.3
 ---------------------------------------------
 ADDED: FIRST DAY OF SCHOOL EVENT

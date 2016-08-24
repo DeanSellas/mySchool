@@ -8,13 +8,14 @@ mySchool is an app I am creating for Android, IOS, and Windows phones for my sch
 * Shows Month and Day of year
 * Login to Google Account (for api and homework feature)
 * Add your Homework!
+* Add a Description to Homework
 * Shows Upcomming homework assignments on Home Page and alerts if homework is due that day
 
 ## Planned Features
 
 * Show Clubs for the day
-* ~~Add your Homework~~ (Added in commit [8015ab0](https://github.com/TheSpaceCoder/mySchool/commit/8015ab0b95a0d84fc21c2b3fff2640c6a340911d))
-* Add Notes to Homework
+* ~~Add your Homework~~ (Added in Commit [8015ab0](https://github.com/TheSpaceCoder/mySchool/commit/8015ab0b95a0d84fc21c2b3fff2640c6a340911d))
+* ~~Add Notes to Homework~~ (Added in Commit [f9aff59](https://github.com/TheSpaceCoder/mySchool/commit/f9aff590a7412883cf47d0af1c69a60a5e3376c2))
 * Push Notifications for clubs and homework
 * Find school by an id (to help with porting to other schools)
 

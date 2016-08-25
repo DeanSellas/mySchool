@@ -319,6 +319,7 @@ var isHomework = 0;
  function writeDay(message){
   // DISPLAYS MESSAGE
   $('#output').text(message);
+  checkDay = 0;
 }
 function writeHomework(homeworkList){
   // FIXES REPEATING HOMEWORK BUG

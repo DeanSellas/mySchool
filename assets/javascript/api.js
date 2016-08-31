@@ -6,7 +6,9 @@
 // Developer Console, https://console.developers.google.com
 
 // API KEY
-var CLIENT_ID = '903500945114-chpbcc2dkele8lnrffk7ko0jtchkhd07.apps.googleusercontent.com';
+var CLIENT_ID = '476941933819-im5o6g7igbtkg51p124bno1866nroh8s.apps.googleusercontent.com';
+
+var CLIENT_SECRET = 'v0326UZAdMymKaMhSjzod4SO';
 
 // SETS PERMISSIONS
 var SCOPES = ["https://www.googleapis.com/auth/calendar"];

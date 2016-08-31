@@ -32,19 +32,31 @@ function resize() {
 // SETS ACTIVE CLASS
 function setActive() {
   setTimeout(function() {
-
+    // IF ON HOMEWORK PAGE
     if (window.location.hash.includes("homework") === true) {
       $('.active').toggleClass("active");
       $('#homework').toggleClass("active");
     }
-    else if (window.location.hash.includes("about") === true) {
+
+    // IF ON CLUBS PAGE
+    else if (window.location.hash.includes("clubs") === true) {
       $('.active').toggleClass("active");
-      $('#about').toggleClass("active");
+      $('#clubs').toggleClass("active");
     }
+
+    // IF ON SCHOOL PAGE
     else if (window.location.hash.includes("school") === true) {
       $('.active').toggleClass("active");
       $('#school').toggleClass("active");
     }
+
+    //IF ON ABOUT PAGE
+    else if (window.location.hash.includes("about") === true) {
+      $('.active').toggleClass("active");
+      $('#about').toggleClass("active");
+    }
+    
+    // IF ON HOME PAGE
     else {
       $('.active').toggleClass("active");
       $('#home').toggleClass("active");

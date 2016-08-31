@@ -18,6 +18,9 @@
   .when('/homework', {
     templateUrl: './assets/html/homework.html',
   })
+  .when('/clubs', {
+    templateUrl: './assets/html/clubs.html',
+  })
   .when('/about', {
     templateUrl: './assets/html/about.html',
   })

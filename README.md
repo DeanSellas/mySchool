@@ -28,7 +28,7 @@ I am also willing to port it to your school so please do not hessitate to send m
 ## Credits
 <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a>: Lead Programmer and Designer
 
-Nicholas Horvat: Designer
+Nicholas Horvat: Public Relations
 
 <a href="http://www.mmacfadden.com/" target="_blank">Mr. Macfadden</a>: for the idea
 

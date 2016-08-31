@@ -281,8 +281,7 @@ var isHomework = 0;
   var homeworkDescription = $('#description').val();
   var dueDate = $('#dueDate').val();
 
-  console.log(homeworkName + '\n' + className + '\n' + dueDate + '\n' + homeworkDescription);
-  alert("Homework Added To Calendar");
+  
 
   $('#class').val("");
   $('#assignment').val("");
@@ -303,6 +302,9 @@ var isHomework = 0;
     },
   }
 
+  // CHECKS FOR ERROR WHEN ADDING HOMEWORK
+  try {
+
   // ADDS EVENT
   var request = gapi.client.calendar.events.insert({
     'calendarId': 'primary',
@@ -311,9 +313,17 @@ var isHomework = 0;
   
    // IF EVENT CREATED
    request.execute(function(homeworkEvent) {
+    console.log(homeworkName + '\n' + className + '\n' + dueDate + '\n' + homeworkDescription);
     console.log('Event created: ' + homeworkEvent.htmlLink);
+    alert("Homework Added To Calendar");
   });
  }
+
+ catch(err) {
+  alert("there was an error please check console logs")
+}
+
+}
 
 /*
  * WRITES THE DAY OF WEEK (BLUE OR GOLD) AND WRITES THE HOMEWORK

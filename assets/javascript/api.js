@@ -243,86 +243,72 @@ var isHomework = 0;
   });
 }
 
+
+// SHOUTOUT TO MDUDE FOR HELPING ME FIX THE CODE
+// https://github.com/arhill05
+
 /**
- * Gets Homework put into the input boxes and adds it to
- * the authorized user's calendar.
- */
- function addHomework() {
+* Gets Homework put into the input boxes and adds it to
+* the authorized user's calendar.
+*/
 
- /*
-  * WORKS!
-  * WORKING CODE I WILL COMMENT LATER
-  * WHEN I FIGURE OUT WHAT I DID!
-  */
-  var date = $('#dueDate').val().split("-");
-  console.log(date, $('#dueDate').val());
-  d = date[2];
-  day = 0 + parseInt(d) + 1;
-  m = date[1];
-  month = parseInt(m, 10);
-  year = date[0];
-  console.log(year+'-'+month+'-'+0+day);
-
-  // GETS LAST DAY OF MONTH
-  var lastDayDate = new Date(year, month + 1, 0);
-
-  // IF LAST DAY OF MONTH GO TO FIRST DAY OF NEXT MONTH
-  if(lastDayDate.getDate() === day){
-    day = 1;
-    month ++;
-    // console.log(month);
-    // console.log(day);
-  }
-
-  // I HAVE NO CLUE WHAT THE F$$K I AM DOING!
+function addHomework() {
+  var homeworkDate = $('#dueDate').val()
 
   var homeworkName = $('#assignment').val();
   var className = $('#class').val();
   var homeworkDescription = $('#description').val();
-  var dueDate = $('#dueDate').val();
+  var dueDate = new Date(homeworkDate);
 
-  
+  // 
+  dueDate.setDate(dueDate.getDate() + 1);
 
   $('#class').val("");
   $('#assignment').val("");
   $('#description').val("");
-
+  
   // INFO FOR EVENT
+  var startDate = new Date(dueDate.setHours(8));
+  var endDate = new Date(dueDate.setHours(15));
   var homeworkEvent = {
 
     "summary": "HOMEWORK - " + homeworkName + " for " + className,
-    'description': 'Homework for ' + className + '. It is due on ' + dueDate + '\nDescription: ' + homeworkDescription,
+    'description': 'Homework for ' + className + '. It is due on ' + dueDate.toLocaleDateString() + '\nDescription: ' + homeworkDescription,
 
     "start": {
-      "date": dueDate
+      "dateTime": startDate
     },
     // 0 BEFORE DATE AND MONTH F&&KS EVERYTHING UP!
     "end": {
-      "date": year+'-'+month+'-'+day
+      "dateTime": endDate
     },
   }
+
+  console.log(homeworkEvent);
 
   // CHECKS FOR ERROR WHEN ADDING HOMEWORK
   try {
 
-  // ADDS EVENT
-  var request = gapi.client.calendar.events.insert({
-    'calendarId': 'primary',
-    'resource': homeworkEvent
-  });
-  
-   // IF EVENT CREATED
-   request.execute(function(homeworkEvent) {
-    console.log(homeworkName + '\n' + className + '\n' + dueDate + '\n' + homeworkDescription);
-    console.log('Event created: ' + homeworkEvent.htmlLink);
-    alert("Homework Added To Calendar");
-  });
- }
+    // ADDS EVENT
 
- catch(err) {
-  alert("there was an error please check console logs")
-}
+    var request = gapi.client.calendar.events.insert({
+      'calendarId': 'primary',
+      'resource': homeworkEvent
+    });
 
+    //IF EVENT CREATED
+    
+    request.execute(function (homeworkEvent) {
+      console.log(homeworkName + '\n' + className + '\n' + dueDate + '\n' + homeworkDescription);
+      console.log('Event created: ' + homeworkEvent.htmlLink);
+      alert("Homework Added To Calendar");
+    });
+  }
+
+  catch (err) {
+    alert("there was an error please check console logs")
+    console.error("Error on request.execute: " + err.message)
+  }
 }
 
 /*

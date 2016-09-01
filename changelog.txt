@@ -5,17 +5,19 @@ CREATOR: THESPACECODER
 WEBSITE: http://myschool.thespacecoder.com/
 GIT REPO: https://github.com/TheSpaceCoder/mySchool
 SUPPORT: https://github.com/TheSpaceCoder/mySchool/issues
-LICENSE: MIT LICENSE
 
 
-CURRENT VERSION
+PUBLIC RELEASE V1.0.8
 ---------------------------------------------
 ADDED: HOMEWORK DESCRIPTION
 ADDED: CLUBS PAGE (NOT WORKING YET)
 
+REMOVED: SCHOOL PAGE
+
 CHANGES: ABOUT PAGE
 
 FIXED: GOOGLE API
+FIXED: UPCOMING HOMEWORK BUG
 
 
 

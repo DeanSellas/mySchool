@@ -235,18 +235,18 @@ a:focus{
 #menu-toggle:hover{
   color: #ccc;
 }
-.credit{
+.navFooter{
   position: absolute;
   font-size: .75rem;
   bottom: 0px;
   min-width: 200px;
 }
-.credit,
-.credit a,
-.credit a:focus{
+.navFooter,
+.navFooter a,
+.navFooter a:focus{
   color: #999;
   text-decoration: none;
 }
-.credit a:hover{
+.navFooter a:hover{
   color: #fff;
 }

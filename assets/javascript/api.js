@@ -210,7 +210,7 @@ var isHomework = 0;
       for (i = 0; i < events.length; i++) {
 
         var event = events[i];
-        var when = event.start.date;
+        var when = event.start.dateTime;
         if (!when) {
           when = event.start.date;
         }
@@ -221,11 +221,11 @@ var isHomework = 0;
         
         // IF CATCHES HOMEWORK EVENT
         if (str.indexOf('HOMEWORK') > -1) {
-          console.log(str.substring(11, strLength) + '\nDue on ' + when.substring(5, 100));
-          writeHomework(str.substring(11, strLength) + ' Due on ' + when.substring(5, 100));
+          console.log(str.substring(11, strLength) + '\nDue on ' + when.substring(5, 10));
+          writeHomework(str.substring(11, strLength)+ ' Due on ' + when.substring(5, 10));
           
           // ALERT IF HOMEWORK IS DUE TODAY
-          if(when.substring(5,100) == today && isHomework != 1){
+          if(when.substring(5,10) == today && isHomework != 1){
             alert("You Have Homework due today!");
           }
 
@@ -254,22 +254,23 @@ var isHomework = 0;
 
 function addHomework() {
   var homeworkDate = $('#dueDate').val()
-
   var homeworkName = $('#assignment').val();
   var className = $('#class').val();
   var homeworkDescription = $('#description').val();
   var dueDate = new Date(homeworkDate);
 
-  // 
+  // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
   dueDate.setDate(dueDate.getDate() + 1);
 
   $('#class').val("");
   $('#assignment').val("");
   $('#description').val("");
   
-  // INFO FOR EVENT
+  // EVENT TIME 8AM TO 3PM
   var startDate = new Date(dueDate.setHours(8));
   var endDate = new Date(dueDate.setHours(15));
+
+  // EVENT INFO
   var homeworkEvent = {
 
     "summary": "HOMEWORK - " + homeworkName + " for " + className,
@@ -278,7 +279,7 @@ function addHomework() {
     "start": {
       "dateTime": startDate
     },
-    // 0 BEFORE DATE AND MONTH F&&KS EVERYTHING UP!
+
     "end": {
       "dateTime": endDate
     },

@@ -24,9 +24,9 @@
   .when('/about', {
     templateUrl: './assets/html/about.html',
   })
-  .when('/school', {
+  /*.when('/school', {
     templateUrl: './assets/html/school.html',
-  })
+  })*/
   .otherwise({
     redirectTo: '/'
   });

@@ -131,8 +131,9 @@ var isHomework = 0;
           }
 
           // CHECKS FOR NO SCHOOL EVENT
-          if (event.summary.indexOf("NO SCHOOL") !== -1) {
-            writeDay("No School, Have a Good Day off");
+          if (event.summary.indexOf("NO SCHOOL") !== -1 && checkDay === 0) {
+            document.title("mySchool | No School")
+            writeDay("No School Today, Have a Good Day off");
             console.log("no school")
             checkDay = 1;
           }
@@ -162,7 +163,6 @@ var isHomework = 0;
 
       // IF NO EVENTS
       else if (checkDay != 1) {
-        console.log("true")
         writeDay("Sorry couldn't catch event from calendar");
       }
     }

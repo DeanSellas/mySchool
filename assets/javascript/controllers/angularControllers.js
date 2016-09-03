@@ -1,14 +1,14 @@
 angular.module('mySchoolApp')
     .controller("clubsController", function ($scope) {
+        var self = this;
+        clubName;
+        clubDescription;
+        clubAttendees;
 
-        $scope.clubName;
-        $scope.clubDescription;
-        $scope.clubAttendees;
+        self.logAllThings = function () {
 
-        $scope.logAllThings = function() {
-
-            console.log($scope.clubName);
-
+            console.log("Club: " + self.clubName);
+            console.log("Desciption: " + self.clubDescription);
         };
 
     });

@@ -20,6 +20,7 @@
   })
   .when('/clubs', {
     templateUrl: './assets/html/clubs.html',
+    controller: 'clubsController',
   })
   .when('/about', {
     templateUrl: './assets/html/about.html',

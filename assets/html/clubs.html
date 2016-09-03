@@ -1,7 +1,7 @@
 <h2>Clubs</h2>
 <h4>PAGE UNDER CONSTRUCTION</h4>
 
-<div class="container" ng-controller="clubsController">
+<div class="container">
   <div class="col-sm-6 col-sm-offset-3">
 
 
@@ -26,14 +26,14 @@
     </div>
 
     <div class="forum-group">
-      <button class="btn btn-default" id="addClub" onclick="logAllThings">Add Club</button>
+      <button class="btn btn-default" id="addClub" onclick="logAllThings()">Add Club</button>
     </div>
   </div>
 </div>
 
 <script>
  function setInputDate() {
-    var _dat = document.querySelector("#dueDate");
+    var _dat = document.querySelector("#clubMeeting");
     var hoy = new Date(),
     d = hoy.getDate(),
     m = hoy.getMonth() + 1,

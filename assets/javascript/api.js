@@ -155,7 +155,7 @@ var isHomework = 0;
 
       // IF WEEKEND
       if (checkWeekend === 0 || checkWeekend === 6) {
-        writeDay("Its the Weekend");
+        writeDay("It's the Weekend");
         document.title = "mySchool | Weekend";
         console.log("Everybody is working for the weekend");
         // alert("weekend");

@@ -64,6 +64,19 @@ function setActive() {
   }, 50);
 }
 
+// ADDS DEVELOPMENT BRANCH TEXT TO PAGE
+function testingBranch() {
+  if (window.location.href.indexOf("localhost") > -1){
+    console.log("DEVELOPMENT BRANCH");
+    $(".title").append('<h4>Development Branch</h4>');
+  }
+
+  if (window.location.href.indexOf("http://thespacecoder.com/myschool/") > -1){
+    console.log("DEVELOPMENT BRANCH");
+    $(".title").append('<h4>Development Branch</h4>');
+  }
+}
+
 // SETS DATE
 function setDay() {
   $('#date').text(month + '/' + day);
@@ -74,3 +87,4 @@ function setDay() {
 $('body').ready(resize);
 $('body').ready(setDay);
 $('body').ready(setActive);
+$('body').ready(testingBranch);

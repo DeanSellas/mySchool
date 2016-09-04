@@ -12,6 +12,7 @@
   <meta charset="UTF-8">
   <meta name="author" content="Dean Sellas">
   <meta name="description" content="mySchool">
+  <meta name="keywords" content="myschool,agenda,glenbrook,glenbrooksouth,spacecoder">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- FOR APP -->
@@ -139,10 +140,11 @@
     });
     
     // UPDATES FUNCTIONS IN REAL TIME
+    $('#home').click(listUpcomingHomework);
+    $('#home').click(listUpcomingClubs);
+    $('#home').click(blueGold);
     $('.sidebar-nav-link').click(setActive);
-    $('.sidebar-nav-link').click(blueGold);
-    $('.sidebar-nav-link').click(listUpcomingHomework);
-    $('.sidebar-nav-link').click(writeDay);
+    
   </script>
 
   <!-- ANALYTICS -->

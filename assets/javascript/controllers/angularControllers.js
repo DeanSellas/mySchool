@@ -14,7 +14,7 @@ angular.module('mySchoolApp')
         */
         self.addClub = function () {
 
-            var clubDate = $('#clubMeeting').val()
+            var clubDate = $('#clubMeeting').val();
             var clubMeeting = new Date(clubDate);
 
             // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
@@ -39,7 +39,9 @@ angular.module('mySchoolApp')
                 },
             };
 
-            console.log(clubEvent);
+            // LOG
+            // console.log(clubEvent);
+            console.log("CLUB DETAILS \nClub " + self.clubName + "\nDescription " + self.clubDescription + "\nMeeting " + clubMeeting);
 
             // ADDS EVENT
             var request = gapi.client.calendar.events.insert({
@@ -53,7 +55,7 @@ angular.module('mySchoolApp')
                 alert("Club Added To Calendar");
             });
 
-            // RESETS TEXT BOX
+            // CLEARS INPUT BOX
             self.clubName = "";
             self.clubDescription = "";
 
@@ -74,7 +76,7 @@ angular.module('mySchoolApp')
         * and adds it to the authorized user's calendar.
         */
         self.addAssignment = function () {
-            var homeworkDate = $('#dueDate').val()
+            var homeworkDate = $('#dueDate').val();
             var dueDate = new Date(homeworkDate);
 
             // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
@@ -87,7 +89,7 @@ angular.module('mySchoolApp')
             // EVENT INFO
             var homeworkEvent = {
 
-                "summary": "HOMEWORK - " + self.homeworkName + " for " + self.className,
+                "summary": "HOMEWORK - " + self.homeworkName + " For " + self.className,
                 'description': 'Homework for ' + self.className + '. It is due on ' + dueDate.toLocaleDateString() + '\nDescription: ' + self.homeworkDescription,
 
                 "start": {
@@ -100,8 +102,8 @@ angular.module('mySchoolApp')
             };
 
             // LOG
-            console.log(homeworkEvent);
-            console.log("Homework:" + self.homeworkName + '\nClass: ' + self.className + '\nDue Date: ' + dueDate + '\nHomework Description: ' + self.homeworkDescription);
+            //console.log(homeworkEvent);
+            console.log("HOMEWORK DETAILS \nHomework:" + self.homeworkName + '\nClass: ' + self.className + '\nHomework Description: ' + self.homeworkDescription + '\nDue Date: ' + dueDate);
 
             // ADDS EVENT
             var request = gapi.client.calendar.events.insert({
@@ -111,11 +113,11 @@ angular.module('mySchoolApp')
 
             //IF EVENT CREATED
             request.execute(function (homeworkEvent) {
-
                 console.log('Event created: ' + homeworkEvent.htmlLink);
                 alert("Homework Added To Calendar");
             });
 
+            // CLEARS INPUT BOX
             self.homeworkName = "";
             self.className = "";
             self.homeworkDescription = "";

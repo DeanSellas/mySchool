@@ -22,12 +22,13 @@ var checkWeekend = (new Date()).getDay();
 // QUICK HOTFIX
 var checkDay = 0;
 var isHomework = 0;
+var isClub = 0;
 
 
 /**
  * Check if current user has authorized this application.
  */
- function checkAuth() {
+function checkAuth() {
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES.join(' '),
@@ -41,7 +42,7 @@ var isHomework = 0;
  *
  * @param {Object} authResult Authorization result.
  */
- function handleAuthResult(authResult) {
+function handleAuthResult(authResult) {
   var authorizeDiv = document.getElementById('authorize-div');
 
   if (authResult && !authResult.error) {
@@ -64,13 +65,13 @@ var isHomework = 0;
  *
  * @param {Event} event Button click event.
  */
- function handleAuthClick(event) {
+function handleAuthClick(event) {
   gapi.auth.authorize({
     client_id: CLIENT_ID,
     scope: SCOPES,
     immediate: false
   },
-  handleAuthResult);
+    handleAuthResult);
   return false;
 }
 
@@ -79,16 +80,17 @@ var isHomework = 0;
  * Load Google Calendar client library. List upcoming events
  * once client library is loaded.
  */
- function loadCalendarApi() {
+function loadCalendarApi() {
   gapi.client.load('calendar', 'v3', blueGold);
   gapi.client.load('calendar', 'v3', listUpcomingHomework);
+  gapi.client.load('calendar', 'v3', listUpcomingClubs);
 }
 
 
 /**
  * Displays if its a Blue or Gold Day
  */
- function blueGold() {
+function blueGold() {
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
     'calendarId': calendar,
@@ -100,7 +102,7 @@ var isHomework = 0;
     'orderBy': 'startTime'
   });
 
-  request.execute(function(resp) {
+  request.execute(function (resp) {
     var events = resp.items;
 
     if (events.length > 0) {
@@ -137,9 +139,9 @@ var isHomework = 0;
 
           // CHECKS FOR NO SCHOOL EVENT
           if (event.summary.indexOf("NO SCHOOL") !== -1 && checkDay === 0) {
-            document.title("mySchool | No School")
+            document.title("mySchool | No School");
             writeDay("No School Today, Have a Good Day off");
-            console.log("no school")
+            console.log("no school");
             checkDay = 1;
           }
 
@@ -149,7 +151,7 @@ var isHomework = 0;
             console.log("Finals Exams");
             checkDay = 1;
           }
-          
+
           // CHECKS FOR FIRST DAY OF SCHOOL
           if (event.summary.indexOf("FIRST DAY OF SCHOOL") !== -1) {
             alert("First Day of School Good Luck!");
@@ -177,17 +179,17 @@ var isHomework = 0;
 
 
 /**
- * Print the summary and start date of the next ten homework events in
+ * Print the summary and start date of the next twenty homework events in
  * the authorized user's calendar. If no events are found an
  * appropriate message is printed.
  */
- function listUpcomingHomework() {
+function listUpcomingHomework() {
 
   // GETS TODAY'S DATE
   var todayDate = new Date(),
-  d = todayDate.getDate(),
-  m = todayDate.getMonth() + 1,
-  today;
+    d = todayDate.getDate(),
+    m = todayDate.getMonth() + 1,
+    today;
 
   if (d < 10) {
     d = "0" + d;
@@ -209,9 +211,9 @@ var isHomework = 0;
     'orderBy': 'startTime'
   });
 
-  request.execute(function(resp) {
+  request.execute(function (resp) {
     var events = resp.items;
-    
+
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
 
@@ -220,18 +222,18 @@ var isHomework = 0;
         if (!when) {
           when = event.start.date;
         }
-        
+
         // EVENT NAME
         var str = event.summary;
         var strLength = str.length;
-        
+
         // IF CATCHES HOMEWORK EVENT
         if (str.indexOf('HOMEWORK') > -1) {
-          console.log(str.substring(11, strLength) + '\nDue on ' + when.substring(5, 10));
-          writeHomework(str.substring(11, strLength)+ ' Due on ' + when.substring(5, 10));
-          
+          console.log("HOMEWORK CALENDAR \n" + str.substring(11, strLength) + ' Due On ' + when.substring(5, 10));
+          writeHomework(str.substring(11, strLength) + ' Due On ' + when.substring(5, 10));
+
           // ALERT IF HOMEWORK IS DUE TODAY
-          if(when.substring(5,10) == today && isHomework != 1){
+          if (when.substring(5, 10) == today && isHomework != 1) {
             alert("You Have Homework due today!");
           }
 
@@ -245,7 +247,59 @@ var isHomework = 0;
       console.log("no homework found");
       writeHomework('No upcoming homework found!');
     }
-    
+
+  });
+}
+
+
+/**
+ * Print the summary and start date of the next ten club events in
+ * the authorized user's calendar. If no events are found an
+ * appropriate message is printed.
+ */
+function listUpcomingClubs() {
+
+  var request = gapi.client.calendar.events.list({
+    'calendarId': 'primary',
+    'timeMin': (new Date()).toISOString(),
+    'showDeleted': false,
+    'singleEvents': true,
+    'maxResults': 10,
+    'orderBy': 'startTime'
+  });
+
+  request.execute(function (resp) {
+    var events = resp.items;
+
+    if (events.length > 0) {
+      for (i = 0; i < events.length; i++) {
+
+        var event = events[i];
+        var when = event.start.dateTime;
+        if (!when) {
+          when = event.start.date;
+        }
+
+        // EVENT NAME
+        var str = event.summary;
+        var strLength = str.length;
+
+        // IF CATCHES HOMEWORK EVENT
+        if (str.indexOf('CLUB') > -1) {
+          console.log("CLUB CALENDAR \n" + str.substring(7, strLength) + " Meeting On " + when.substring(5, 10));
+          writeClub(str.substring(7, strLength) + " Meeting On " + when.substring(5, 10));
+
+          isClub = 1;
+        }
+      }
+    }
+
+    // IF NO HOMEWORK EVENT IS FOUND
+    if (isClub != 1) {
+      console.log("no clubs found");
+      writeClub('No upcoming clubs found!');
+    }
+
   });
 }
 
@@ -256,18 +310,28 @@ var isHomework = 0;
 
 
 /*
- * WRITES THE DAY OF WEEK (BLUE OR GOLD) AND WRITES THE HOMEWORK
+ * WRITES THE DAY OF WEEK (BLUE OR GOLD)
+ * WRITES HOMEWORK
+ * WRITES CLUB
  */
- function writeDay(message){
+function writeDay(message) {
   // DISPLAYS MESSAGE
   $('#output').text(message);
   checkDay = 0;
 }
-function writeHomework(homeworkList){
+function writeHomework(homeworkList) {
   // FIXES REPEATING HOMEWORK BUG
-  if($('#'+i).text() != homeworkList){
+  if ($('#' + i).text() != homeworkList) {
 
     // DISPLAYS MESSAGE
-    $('#upcomingHomework').append('<p id="'+i+'">' + homeworkList + '</p>' + '\n');
+    $('#upcomingHomework').append('<p id="' + i + '">' + homeworkList + '</p>' + '\n');
+  }
+}
+function writeClub(clubList) {
+  // FIXES REPEATING HOMEWORK BUG
+  if ($('#' + i).text() != clubList) {
+
+    // DISPLAYS MESSAGE
+    $('#upcomingClubs').append('<p id="' + i + '">' + clubList + '</p>' + '\n');
   }
 }

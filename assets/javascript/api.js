@@ -267,8 +267,8 @@ function addHomework() {
   $('#description').val("");
   
   // EVENT TIME 8AM TO 3PM
-  var startDate = new Date(dueDate.setHours(8));
-  var endDate = new Date(dueDate.setHours(15));
+  var startTime = new Date(dueDate.setHours(8));
+  var endTime = new Date(dueDate.setHours(15));
 
   // EVENT INFO
   var homeworkEvent = {
@@ -277,11 +277,11 @@ function addHomework() {
     'description': 'Homework for ' + className + '. It is due on ' + dueDate.toLocaleDateString() + '\nDescription: ' + homeworkDescription,
 
     "start": {
-      "dateTime": startDate
+      "dateTime": startTime
     },
 
     "end": {
-      "dateTime": endDate
+      "dateTime": endTime
     },
   }
 

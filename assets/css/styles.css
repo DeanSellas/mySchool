@@ -13,7 +13,7 @@
 ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 -General Content
--HomeWork
+-HomeWork + Clubs
 -Navigation
 
 --------------------------------------------------*/
@@ -89,10 +89,16 @@ a:focus{
 .paragraph{
   text-indent: 2em;
 }
-/* HOMEWORK
+
+/* HOMEWORK + CLUBS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .form-group{text-align:left;}
+
+.form-group ::selection{
+  background-color: #1d1f1f;
+  color: white;
+}
 
 .formLabel{
   font-family: 'Roboto', sans-serif;

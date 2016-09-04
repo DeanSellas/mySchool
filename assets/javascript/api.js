@@ -23,6 +23,7 @@ var checkWeekend = (new Date()).getDay();
 var checkDay = 0;
 var isHomework = 0;
 
+
 /**
  * Check if current user has authorized this application.
  */
@@ -33,6 +34,7 @@ var isHomework = 0;
     'immediate': true
   }, handleAuthResult);
 }
+
 
 /**
  * Handle response from authorization server.
@@ -56,6 +58,7 @@ var isHomework = 0;
   }
 }
 
+
 /**
  * Initiate auth flow in response to user clicking authorize button.
  *
@@ -71,6 +74,7 @@ var isHomework = 0;
   return false;
 }
 
+
 /**
  * Load Google Calendar client library. List upcoming events
  * once client library is loaded.
@@ -79,6 +83,7 @@ var isHomework = 0;
   gapi.client.load('calendar', 'v3', blueGold);
   gapi.client.load('calendar', 'v3', listUpcomingHomework);
 }
+
 
 /**
  * Displays if its a Blue or Gold Day
@@ -170,6 +175,7 @@ var isHomework = 0;
   });
 }
 
+
 /**
  * Print the summary and start date of the next ten homework events in
  * the authorized user's calendar. If no events are found an
@@ -246,71 +252,8 @@ var isHomework = 0;
 
 // SHOUTOUT TO MDUDE FOR HELPING ME FIX THE CODE
 // https://github.com/arhill05
+// HOMEWORK LOGIC MOVED TO controllers/angularControllers.js line 60
 
-/**
-* Gets Homework put into the input boxes and adds it to
-* the authorized user's calendar.
-*/
-
-function addHomework() {
-  var homeworkDate = $('#dueDate').val()
-  var homeworkName = $('#assignment').val();
-  var className = $('#class').val();
-  var homeworkDescription = $('#description').val();
-  var dueDate = new Date(homeworkDate);
-
-  // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
-  dueDate.setDate(dueDate.getDate() + 1);
-
-  $('#class').val("");
-  $('#assignment').val("");
-  $('#description').val("");
-  
-  // EVENT TIME 8AM TO 3PM
-  var startTime = new Date(dueDate.setHours(8));
-  var endTime = new Date(dueDate.setHours(15));
-
-  // EVENT INFO
-  var homeworkEvent = {
-
-    "summary": "HOMEWORK - " + homeworkName + " for " + className,
-    'description': 'Homework for ' + className + '. It is due on ' + dueDate.toLocaleDateString() + '\nDescription: ' + homeworkDescription,
-
-    "start": {
-      "dateTime": startTime
-    },
-
-    "end": {
-      "dateTime": endTime
-    },
-  }
-
-  console.log(homeworkEvent);
-
-  // CHECKS FOR ERROR WHEN ADDING HOMEWORK
-  try {
-
-    // ADDS EVENT
-
-    var request = gapi.client.calendar.events.insert({
-      'calendarId': 'primary',
-      'resource': homeworkEvent
-    });
-
-    //IF EVENT CREATED
-    
-    request.execute(function (homeworkEvent) {
-      console.log(homeworkName + '\n' + className + '\n' + dueDate + '\n' + homeworkDescription);
-      console.log('Event created: ' + homeworkEvent.htmlLink);
-      alert("Homework Added To Calendar");
-    });
-  }
-
-  catch (err) {
-    alert("there was an error please check console logs")
-    console.error("Error on request.execute: " + err.message)
-  }
-}
 
 /*
  * WRITES THE DAY OF WEEK (BLUE OR GOLD) AND WRITES THE HOMEWORK

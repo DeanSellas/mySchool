@@ -17,6 +17,8 @@ var app = angular
       })
       .when('/homework', {
         templateUrl: './assets/html/homework.html',
+        controller: 'homeworkController',
+        controllerAs: 'vm',
       })
       .when('/clubs', {
         templateUrl: './assets/html/clubs.html',

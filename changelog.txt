@@ -5,6 +5,19 @@ CREATOR: THESPACECODER
 WEBSITE: http://myschool.thespacecoder.com/
 GIT REPO: https://github.com/TheSpaceCoder/mySchool
 SUPPORT: https://github.com/TheSpaceCoder/mySchool/issues
+TWITTER: https://twitter.com/TheSpaceCoder
+
+
+CURRENT VERSION
+---------------------------------------------
+ADDED: ANGULAR TO HOMEWORK AND CLUB PAGE
+ADDED: CLUBS PAGE FUNCTIONALITY
+
+CHANGES: GRAMMAR
+CHANGES: VIEWS.JS
+
+FIXED: SMALL BUGS
+
 
 
 PUBLIC RELEASE V1.0.8

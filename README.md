@@ -8,8 +8,8 @@ mySchool is an app I am creating for Android, IOS, and Windows phones for my sch
 * Shows Month and Day of year
 * Login to Google Account (for api and homework feature)
 * Add your Homework!
-* Add a Description to Homework
-* Shows Upcoming homework assignments on Home Page and alerts if homework is due that day
+* Add Clubs!
+* Shows upcoming homework assignments on Home Page and alerts if homework is due that day
 
 ## Planned Features
 

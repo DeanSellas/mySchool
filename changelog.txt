@@ -8,7 +8,7 @@ SUPPORT: https://github.com/TheSpaceCoder/mySchool/issues
 TWITTER: https://twitter.com/TheSpaceCoder
 
 
-CURRENT VERSION
+PUBLIC RELEASE V1.1
 ---------------------------------------------
 ADDED: ANGULARJS CONTROLLERS
 ADDED: ANGULAR TO HOMEWORK AND CLUB PAGE

@@ -139,7 +139,7 @@ function blueGold() {
 
           // CHECKS FOR NO SCHOOL EVENT
           if (event.summary.indexOf("NO SCHOOL") !== -1 && checkDay === 0) {
-            document.title("mySchool | No School");
+            document.title = "mySchool | No School";
             writeDay("No School Today, Have a Good Day off");
             console.log("no school");
             checkDay = 1;

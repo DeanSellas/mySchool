@@ -9,11 +9,11 @@ mySchool is an app I am creating for Android, IOS, and Windows phones for my sch
 * Login to Google Account (for api and homework feature)
 * Add your Homework!
 * Add Clubs!
-* Shows upcoming homework assignments on Home Page and alerts if homework is due that day
+* Shows Upcoming Homework and Upcoming Clubs on Home Page
 
 ## Planned Features
 
-* Show Clubs for the day
+* ~~Show Clubs for the day~~ (Added in Commit [23402a7](https://github.com/TheSpaceCoder/mySchool/commit/23402a77b1ffc050bf2955921b1cac38fd90b9d3))
 * ~~Add your Homework~~ (Added in Commit [8015ab0](https://github.com/TheSpaceCoder/mySchool/commit/8015ab0b95a0d84fc21c2b3fff2640c6a340911d))
 * ~~Add Notes to Homework~~ (Added in Commit [f9aff59](https://github.com/TheSpaceCoder/mySchool/commit/f9aff590a7412883cf47d0af1c69a60a5e3376c2))
 * Push Notifications for clubs and homework

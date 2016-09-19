@@ -66,14 +66,11 @@ function setActive() {
 
 // ADDS DEVELOPMENT BRANCH TEXT TO PAGE
 function testingBranch() {
-  if (window.location.href.indexOf("localhost") > -1){
-    console.log("DEVELOPMENT BRANCH");
-    $(".title").append('<h4>Development Branch</h4>');
-  }
 
-  if (window.location.href.indexOf("http://thespacecoder.com/myschool/") > -1){
+  if (window.location.href.indexOf("http://thespacecoder.com/myschool/") > -1 || window.location.href.indexOf("localhost") > -1){
     console.log("DEVELOPMENT BRANCH");
     $(".title").append('<h4>Development Branch</h4>');
+    $(".version").html('<p class="version"><a href="https://github.com/TheSpaceCoder/mySchool/wiki/Development-Branch">Development Branch</a></p>');
   }
 }
 

@@ -18,8 +18,6 @@ angular.module('mySchoolApp')
             var clubMeeting = new Date(clubDate);
             var clubTime = $("#meetingTime").val();
 
-            console.log(clubTime);
-
             // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
             clubMeeting.setDate(clubMeeting.getDate() + 1);
 

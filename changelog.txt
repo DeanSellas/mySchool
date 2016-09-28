@@ -3,10 +3,17 @@ MYSCHOOL CHANGELOG
 
 CREATOR: THESPACECODER
 WEBSITE: http://myschool.thespacecoder.com/
-GIT REPO: https://github.com/TheSpaceCoder/mySchool
+GIT REPO: https://github.com/TheSpaceCoder/mySchool.git
+DEVELOPMENT BRANCH: https://github.com/TheSpaceCoder/mySchool/wiki/Development-Branch
+ROADMAP: https://github.com/TheSpaceCoder/mySchool/projects
 SUPPORT: https://github.com/TheSpaceCoder/mySchool/issues
 TWITTER: https://twitter.com/TheSpaceCoder
 
+
+CURRENT VERSION
+---------------------------------------------
+ADDED: FAILSAFE SO EMPTY EVENTS ARE NOT MADE
+ADDED: CLUB TIMES (BEFORE AND AFTER SCHOOL)
 
 PUBLIC RELEASE V1.1
 ---------------------------------------------

@@ -16,6 +16,9 @@ angular.module('mySchoolApp')
 
             var clubDate = $('#clubMeeting').val();
             var clubMeeting = new Date(clubDate);
+            var clubTime = $("#meetingTime").val();
+
+            console.log(clubTime);
 
             // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
             clubMeeting.setDate(clubMeeting.getDate() + 1);
@@ -39,25 +42,31 @@ angular.module('mySchoolApp')
                 },
             };
 
-            // LOG
-            // console.log(clubEvent);
-            console.log("CLUB DETAILS \nClub " + self.clubName + "\nDescription " + self.clubDescription + "\nMeeting " + clubMeeting);
+            // CHECKS IF INPUTS ARE FILLED OUT
+            if (clubName.value !== "") {
+                // LOG
+                // console.log(clubEvent);
+                console.log("CLUB DETAILS \nClub " + self.clubName + "\nDescription " + self.clubDescription + "\nMeeting " + clubMeeting);
 
-            // ADDS EVENT
-            var request = gapi.client.calendar.events.insert({
-                'calendarId': 'primary',
-                'resource': clubEvent
-            });
+                // ADDS EVENT
+                var request = gapi.client.calendar.events.insert({
+                    'calendarId': 'primary',
+                    'resource': clubEvent
+                });
 
-            //IF EVENT CREATED
-            request.execute(function (clubEvent) {
-                console.log('Event created: ' + clubEvent.htmlLink);
-                alert("Club Added To Calendar");
-            });
+                //IF EVENT CREATED
+                request.execute(function (clubEvent) {
+                    console.log('Event created: ' + clubEvent.htmlLink);
+                    alert("Club Added To Calendar");
+                });
 
-            // CLEARS INPUT BOX
-            self.clubName = "";
-            self.clubDescription = "";
+                // CLEARS INPUT BOX
+                self.clubName = "";
+                self.clubDescription = "";
+            }
+            else {
+                alert("Please Fill All Required Fields");
+            }
 
         };
     });

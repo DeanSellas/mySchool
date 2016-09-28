@@ -64,6 +64,7 @@ angular.module('mySchoolApp')
             }
             else {
                 alert("Please Fill All Required Fields");
+                console.log("Not all Fields Filled out");
             }
 
         };
@@ -92,42 +93,48 @@ angular.module('mySchoolApp')
             // EVENT TIME 8AM TO 3PM
             var startTime = new Date(dueDate.setHours(8));
             var endTime = new Date(dueDate.setHours(15));
+            // CHECKS IF INPUTS ARE FILLED OUT
+            if (homeworkName.value !== "" || className.value !== "") {
+                // EVENT INFO
+                var homeworkEvent = {
 
-            // EVENT INFO
-            var homeworkEvent = {
+                    "summary": "HOMEWORK - " + self.homeworkName + " For " + self.className,
+                    'description': 'Homework for ' + self.className + '. It is due on ' + dueDate.toLocaleDateString() + '\nDescription: ' + self.homeworkDescription,
 
-                "summary": "HOMEWORK - " + self.homeworkName + " For " + self.className,
-                'description': 'Homework for ' + self.className + '. It is due on ' + dueDate.toLocaleDateString() + '\nDescription: ' + self.homeworkDescription,
+                    "start": {
+                        "dateTime": startTime
+                    },
 
-                "start": {
-                    "dateTime": startTime
-                },
+                    "end": {
+                        "dateTime": endTime
+                    },
+                };
 
-                "end": {
-                    "dateTime": endTime
-                },
-            };
+                // LOG
+                //console.log(homeworkEvent);
+                console.log("HOMEWORK DETAILS \nHomework:" + self.homeworkName + '\nClass: ' + self.className + '\nHomework Description: ' + self.homeworkDescription + '\nDue Date: ' + dueDate);
 
-            // LOG
-            //console.log(homeworkEvent);
-            console.log("HOMEWORK DETAILS \nHomework:" + self.homeworkName + '\nClass: ' + self.className + '\nHomework Description: ' + self.homeworkDescription + '\nDue Date: ' + dueDate);
+                // ADDS EVENT
+                var request = gapi.client.calendar.events.insert({
+                    'calendarId': 'primary',
+                    'resource': homeworkEvent
+                });
 
-            // ADDS EVENT
-            var request = gapi.client.calendar.events.insert({
-                'calendarId': 'primary',
-                'resource': homeworkEvent
-            });
+                //IF EVENT CREATED
+                request.execute(function (homeworkEvent) {
+                    console.log('Event created: ' + homeworkEvent.htmlLink);
+                    alert("Homework Added To Calendar");
+                });
 
-            //IF EVENT CREATED
-            request.execute(function (homeworkEvent) {
-                console.log('Event created: ' + homeworkEvent.htmlLink);
-                alert("Homework Added To Calendar");
-            });
-
-            // CLEARS INPUT BOX
-            self.homeworkName = "";
-            self.className = "";
-            self.homeworkDescription = "";
+                // CLEARS INPUT BOX
+                self.homeworkName = "";
+                self.className = "";
+                self.homeworkDescription = "";
+            }
+            else {
+                alert("Please Fill All Required Fields");
+                console.log("Not all Fields Filled out");
+            }
 
         };
 

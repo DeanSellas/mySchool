@@ -14,6 +14,8 @@ angular.module('mySchoolApp')
         */
         self.addClub = function () {
 
+            var startTime, endTime;
+
             var clubDate = $('#clubMeeting').val();
             var clubMeeting = new Date(clubDate);
             var clubTime = $("#meetingTime").val();
@@ -21,9 +23,19 @@ angular.module('mySchoolApp')
             // +1 TO DATE, WHY? JAVASCRIPT IS WEIRD
             clubMeeting.setDate(clubMeeting.getDate() + 1);
 
-            // EVENT TIME 8AM TO 3PM
-            var startTime = new Date(clubMeeting.setHours(8));
-            var endTime = new Date(clubMeeting.setHours(15));
+            // CHECKS IF FORE BEFORE SCHOOL
+            if (clubTime === "1") {
+                // EVENT TIME 7AM TO 8AM
+                startTime = new Date(clubMeeting.setHours(7));
+                endTime = new Date(clubMeeting.setHours(8));
+            }
+            
+            //CHECKS FOR AFTER SCHOOL
+            if (clubTime === "2"){
+                // EVENT TIME 3PM TO 4PM
+                startTime = new Date(clubMeeting.setHours(15));
+                endTime = new Date(clubMeeting.setHours(16));
+            }
 
             // EVENT INFO
             var clubEvent = {

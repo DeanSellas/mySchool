@@ -69,6 +69,7 @@ function testingBranch() {
 
   if (window.location.href.indexOf("http://thespacecoder.com/myschool/") > -1 || window.location.href.indexOf("localhost") > -1){
     console.log("DEVELOPMENT BRANCH");
+    console.log("                 ________ \n             _,.-Y  |  |  Y-._ \n        .-~\"   ||  |  |  |   \"-. \n        I\" \"\"==\"|\" !\"\"! \"|\"[]\"\"|     _____ \n        L__  [] |..------|:   _[----I\" .-{\"-. \n       I___|  ..| l______|l_ [__L]_[I_/r(=}=-P \n      [L______L_[________]______j~  '-=c_]/=-^ \n       \\_I_j.--.\\==I|I==_/.--L_] \n         [_((==)[`-----\"](==)j \n           I--I\"~~\"\"\"~~\"I--I \n            |[]|         |[]| \n            l__j         l__j \n            |!!|         |!!| \n            |..|         |..| \n            ([])         ([]) \n            ]--[         ]--[ \n            [_L]         [_L] \n           /|..|\\       /|..|\\ \n          `=}--{='     `=}--{=' \n         .-^--r-^-.   .-^--r-^-.             Imperial AT-AT \n   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     $(".title").append('<h4>Development Branch</h4>');
     $(".version").html('<p class="version"><a href="https://github.com/TheSpaceCoder/mySchool/wiki/Development-Branch">Development Branch</a></p>');
   }

@@ -75,7 +75,7 @@ angular.module('mySchoolApp')
                 self.clubDescription = "";
             }
             else {
-                alert("Please Fill All Required Fields");
+                alert("Please Fill Club Name Field");
                 console.log("Not all Fields Filled out");
             }
 
@@ -105,8 +105,9 @@ angular.module('mySchoolApp')
             // EVENT TIME 8AM TO 3PM
             var startTime = new Date(dueDate.setHours(8));
             var endTime = new Date(dueDate.setHours(15));
+
             // CHECKS IF INPUTS ARE FILLED OUT
-            if (homeworkName.value !== "" || className.value !== "") {
+            if (homeworkName.value !== "" && className.value !== "") {
                 // EVENT INFO
                 var homeworkEvent = {
 
@@ -144,8 +145,21 @@ angular.module('mySchoolApp')
                 self.homeworkDescription = "";
             }
             else {
-                alert("Please Fill All Required Fields");
+
                 console.log("Not all Fields Filled out");
+
+                if (homeworkName.value === "" && className.value === ""){
+                    alert("Please Fill Assignment Name and Class Fields");
+                    console.log("Missing: Assignment Name and Class Fields");
+                }
+                else if (homeworkName.value === "") {
+                    alert("Please Fill Assignment Name Field");
+                    console.log("Missing: Assignment Name Field");
+                }
+                else if (className.value === ""){
+                    alert("Please Fill Class Field");
+                    console.log("Missing: Class Field");
+                }
             }
 
         };

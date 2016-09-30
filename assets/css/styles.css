@@ -105,6 +105,10 @@ a:focus{
   font-weight: 510;
 }
 
+.required{
+    font-size: 10px;
+}
+
 .dropdown{
   height: 36px;
 }

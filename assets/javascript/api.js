@@ -20,7 +20,7 @@ var calendar = 'glenbrook225.org_5ubk7oftem2kuc5gm5j6pjgauc@group.calendar.googl
 var checkWeekend = (new Date()).getDay();
 
 // QUICK HOTFIX
-var checkDay = 0;
+var checkDay;
 var isHomework = 0;
 var isClub = 0;
 
@@ -91,6 +91,8 @@ function loadCalendarApi() {
  * Displays if its a Blue or Gold Day
  */
 function blueGold() {
+  // ADDED TO HOTFIX DAY NOT SHOWING BUG WHEN PAGE IS REOPENED
+  checkDay = 0;
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
     'calendarId': calendar,
@@ -173,7 +175,6 @@ function blueGold() {
         writeDay("Sorry couldn't catch event from calendar");
       }
     }
-
   });
 }
 

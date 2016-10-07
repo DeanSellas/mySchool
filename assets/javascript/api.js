@@ -100,7 +100,7 @@ function blueGold() {
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 5,
+    'maxResults': 10,
     'orderBy': 'startTime'
   });
 

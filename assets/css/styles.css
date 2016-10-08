@@ -172,25 +172,26 @@ a:focus{
   line-height: 40px;
 }
 
-.sidebar-nav li a.sidebar-nav-link {
+.sidebar-nav-link {
   display: block;
   text-decoration: none;
   color: #999999;
 }
 
-.sidebar-nav li a.sidebar-nav-link:hover {
+.sidebar-nav-link:hover {
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
+  transition: .4s ease-out;
 }
-.sidebar-nav li a.sidebar-nav-link.active{
+.sidebar-nav-link.active{
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li a.sidebar-nav-link:active,
-.sidebar-nav li a.sidebar-nav-link:focus {
+.sidebar-nav-link:active,
+.sidebar-nav-link:focus {
   text-decoration: none;
 }
 

@@ -33,27 +33,3 @@
   </div>
 </div>
 
-<script>
- function setInputDate() {
-    var _dat = document.querySelector("#dueDate");
-    var hoy = new Date(),
-    d = hoy.getDate(),
-    m = hoy.getMonth() + 1,
-    y = hoy.getFullYear(),
-    data;
-
-    if (d < 10) {
-      d = "0" + d;
-    }
-    if (m < 10) {
-      m = "0" + m;
-    }
-
-    data = y + "-" + m + "-" + d;
-    console.log('HOMEWORK PAGE');
-    _dat.value = data;
-  }
-
-  setInputDate();
-</script>
-

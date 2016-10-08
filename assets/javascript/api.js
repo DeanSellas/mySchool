@@ -8,8 +8,6 @@
 // API KEY
 var CLIENT_ID = '476941933819-im5o6g7igbtkg51p124bno1866nroh8s.apps.googleusercontent.com';
 
-var CLIENT_SECRET = 'v0326UZAdMymKaMhSjzod4SO';
-
 // SETS PERMISSIONS
 var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
@@ -93,10 +91,10 @@ function loadCalendarApi() {
 function blueGold() {
   // ADDED TO HOTFIX DAY NOT SHOWING BUG WHEN PAGE IS REOPENED
   checkDay = 0;
+
   //Gets events from google calendar
   var request = gapi.client.calendar.events.list({
     'calendarId': calendar,
-    // 'calendarId': 'dgsellas@gmail.com', SCHOOL STARTED AGAIN BACK TO SCHOOLS CALENDARf
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,

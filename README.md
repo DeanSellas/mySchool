@@ -25,6 +25,24 @@ Because this is currently open source feel free to fork it and modify it to your
 
 I am also willing to port it to your school so please do not hesitate to send me an email at contact@thespacecoder.com. So we can discuss this app coming to your school.
 
+## How to Help Develop this App
+
+### Requirements
+* [Node.js](https://nodejs.org/en/)
+* [Local Web-Server](https://www.npmjs.com/package/local-web-server)
+
+you will need both of these in order to help run the app on your computer.
+
+After you install these open command prompt and navigate to the project. After you get to your project type in this line of code.
+
+`ws -p 9000`
+
+This will start a local webserver on port 9000 (if you do not know what this means do no worry about all the details just know it works). Now to actually test the app go to <a href="http://localhost:9000/">localhost:9000</a> on your prefered webbrowser and you will be seeing your current build of the app.
+
+Note that when you save you will have to refresh the page in order for the changes to be processed.
+
+If this does not work please submit a issue and I will assist you as soon as possible.
+
 ## Credits
 <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a>: Lead Programmer and Designer
 

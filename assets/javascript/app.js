@@ -61,7 +61,7 @@ function setPage() {
     else {
       activeClass("#home");
     }
-  }, 50);
+  }, 75);
 }
 
 // SETS ACTIVE CLASS, CLEANS UP JAVASCRIPT

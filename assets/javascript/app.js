@@ -110,6 +110,10 @@ $('body').ready(setDay);
 $('body').ready(setPage);
 $('body').ready(testingBranch);
 
+$(window).resize(function() {
+  resize();
+});
+
 
 
 

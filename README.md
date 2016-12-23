@@ -46,8 +46,6 @@ If this does not work please submit a issue and I will assist you as soon as pos
 ## Credits
 <a href="http://thespacecoder.com/" target="_blank">Dean Sellas</a>: Lead Programmer and Designer
 
-Nicholas Horvat: Public Relations
-
 <a href="http://www.mmacfadden.com/" target="_blank">Mr. Macfadden</a>: for the idea
 
 And everyone who is helping by offering feedback, suggestions, and testing the app!

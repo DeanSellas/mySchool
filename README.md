@@ -2,6 +2,10 @@
 
 mySchool is an app I am creating for Android, IOS, and Windows phones for my school to show if it is a blue or gold day, what clubs are going on that day, and add your homework to your calendar. Currently it is only for Glenbrook South but I have written my code so it can easily be ported to other schools.
 
+## Letter From Dean
+
+As of 1/20/17 I will be discontinuing development of mySchool there are many reasons behind this but the main one is I no longer have time to work on this project and I want to move on to bigger and better things so keep your eyes open for future projects. You can keep up to date on my projects on blog.thespacecoder.com, that is where I am going to be posting news and updates to work. I had a lot of fun creating mySchool and I hope it served you well, it will still be hosted on my website and I will be fixing bugs but no new features will be added.
+
 ## Current Features
 
 * Shows what day it is (Blue or Gold for Glenbrook South)
